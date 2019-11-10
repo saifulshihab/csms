@@ -9,3 +9,15 @@ def home(request):
 
 def index(request):
     return render(request, 'index.html')
+
+
+def userlogin(request):
+    return render(request, 'userlogin.html')
+
+
+def usersignup(request):
+    return render(request, 'usersignup.html')
+
+
+def userbacklogin(request):
+    return render(request, 'userlogin.html')
