@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.userSelect {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 650px;
+  height: 10px;
+}
+
+.user {
+  width: 150px;
+  height: 160px;
+  background: orange;
+  float: left;
+  margin-right: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.user i {
+  font-size: 100px;
+  color: #484848;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.username {
+  height: 40px;
+  background: #ddd;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.username p {
+  padding: 10px;
+}
+.officer-registration-form {
+  margin: 0 auto;
+  width: 500px;
+  background: #f2f2f2;
+  padding: 10px;
+  margin-top: 50px;
+  border-radius: 5px;
+}
+.offloginform .oreg_alert,
+.officer-registration-form .oreg_alert {
+  margin-left: -40px;
+  font-size: 13px;
+  height: 30px;
+  padding: 4px 0;
+}
+.offloginform {
+  background: #c9ccd6;
+  width: 400px;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+body {
+  background-color: whitesmoke;
+}
+.tophead {
+  height: 50px;
+}
+.tophead .logo {
+  padding: 4px 20px;
+}
+.tophead .title h5 {
+  color: white;
+  padding: 10px;
+}
+.tophead .logout {
+  padding: 10px;
+}
+.tophead .menubtn {
+  color: white;
+  margin: 10px 20px;
+}
+
+/*Side Nav*/
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  margin-top: 50px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+/*Side Nav*/
+#page_content {
+  padding: 10px;
+}
+#page_content .school {
+  background: white;
+  border-radius: 10px;
+  height: 300px;
+}
+.school_info {
+  height: 250px;
+  padding: 10px 0px;
+}
+#page_content .school .school_name {
+  background: #78d5f7;
+  height: 35px;
+  padding: 5px;
+  border-radius: 10px 10px 0 0;
+}
+.school_name a {
+  color: #373737;
+}
+#page_content .info {
+  height: 60px;
+  padding: 0px 10px;
+}
+.info .text {
+  display: inline-block;
+  margin: 10px;
+}
+.info .number {
+  width: 30%;
+  text-align: center;
+}
+.attntxt,
+.restxt {
+  font-size: 12px;
+  color: #909090;
+  margin-top: -20px;
+}
