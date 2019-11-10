@@ -1,6 +1,5 @@
 body {
-  margin: 0;
-  padding: 0;
+  background-color: whitesmoke;
 }
 .userSelect {
   position: absolute;
@@ -39,31 +38,30 @@ body {
 .username p {
   padding: 10px;
 }
+.usersignupform,
 .officer-registration-form {
   margin: 0 auto;
   width: 500px;
-  background: #f2f2f2;
+  background: white;
   padding: 10px;
   margin-top: 50px;
   border-radius: 5px;
 }
 .offloginform .oreg_alert,
+.userloginform .oreg_alert,
 .officer-registration-form .oreg_alert {
   margin-left: -40px;
   font-size: 13px;
   height: 30px;
   padding: 4px 0;
 }
-.offloginform {
-  background: #c9ccd6;
+.offloginform,
+.userloginform {
+  background: white;
   width: 400px;
   margin: 0 auto;
   border-radius: 5px;
   padding: 10px;
-}
-
-body {
-  background-color: whitesmoke;
 }
 .tophead {
   height: 50px;
