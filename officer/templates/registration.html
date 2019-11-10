@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="officer-registration-form">
+        <h4 class="mb-3 d-inline-block">Officer Registration</h4><span
+            class="mt-1 float-right badge badge-info">CSMS</span>
+        <form action="officerReg" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="oname" placeholder="Enter your name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="oemail" placeholder="Enter your email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="oempid" placeholder="Your employee id" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="opass" placeholder="Enter password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="ocpass" placeholder="Confirm password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <select name="oworkp" id="" class="form-control" required>
+                    <option value="0" disabled selected>--Select your workplace--</option>
+                    <option value="Dhaka">Dhaka</option>
+                    <option value="Chandpur">Chandpur</option>
+                    <option value="Cumilla">Cumilla</option>
+                </select>
+            </div>
+            <input type="submit" class=" float-right btn btn-sm btn-outline-success" value="Register">
+            <span><a href="backlogin" class="text-secondary" style="font-size:13px">Back to login</a></span>
+
+        </form>
+
+        <div class="mt-3">
+            {% if messages %}
+            <ul class="messages text-center">
+                {% for msg in messages %}
+                <div class="oreg_alert alert alert-primary">{{ msg }}</div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
