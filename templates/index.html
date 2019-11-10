@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Centralized School Monitoring System</title>
+
+    <style type="text/css">
+        .userSelect {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 650px;
+            height: 10px;
+        }
+
+        .user {
+            width: 150px;
+            height: 160px;
+            background: orange;
+            float: left;
+            margin-right: 10px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .user i {
+            font-size: 100px;
+            color: #484848;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .username {
+            height: 40px;
+            background: #ddd;
+            border-radius: 0px 0px 5px 5px;
+        }
+
+        .username p {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}
+
+    <div class="container">
+        <div class="userSelect">
+            <div class="user" style="background:#8abd2e">
+                <a href="enterOfficer"><i class="fas fa-user-shield"></i></a>
+                <div class="username">
+                    <p>Officer</p>
+                </div>
+            </div>
+            <div class="user" style="background:#fbaa52">
+                <a href="enterTeacher"><i class="fas fa-user"></i></a>
+                <div class="username">
+                    <p>Headmaster</p>
+                </div>
+            </div>
+            <div class="user" style="background:#41a4ca">
+                <a href=""><i class="fas fa-chalkboard-teacher"></i></a>
+
+                <div class="username">
+                    <p>Teacher</p>
+                </div>
+            </div>
+            <div class="user" style="background:#bf81db">
+                <a href=""><i class="fas fa-users"></i></a>
+                <div class="username">
+                    <p>Student</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+
+</html>

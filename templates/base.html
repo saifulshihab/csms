@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Centralized School Monitoring System</title>
+    <link rel="icon" href="{% static 'images/logo.png'%}" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="home"><i style="margin-right:7px" class="fas fa-school"></i>Centralized School
+            Monitoring System</a>
+        <!-- <div class="info justify-content-end"> 
+	<ul class="navbar-nav">
+		<li class="nav-item"><a class="nav-link" href="">About</a></li>
+		<li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+	</ul>
+  </div>-->
+    </nav>
+    {% block content %}
+    {% endblock content %}
+</body>
+
+</html>
