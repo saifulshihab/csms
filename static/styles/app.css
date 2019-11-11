@@ -55,6 +55,12 @@ body {
   height: 30px;
   padding: 4px 0;
 }
+#ureg_alert {
+  margin-left: -40px;
+  font-size: 13px;
+  height: 30px;
+  padding: 4px 0;
+}
 .offloginform,
 .userloginform {
   background: white;
