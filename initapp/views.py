@@ -14,10 +14,6 @@ def index(request):
     return render(request, 'index.html')
 
 
-def userlogin(request):
-    return render(request, 'userlogin.html')
-
-
 def usersignup(request):
     return render(request, 'usersignup.html')
 
@@ -87,3 +83,23 @@ def userregistration(request):
                 else:
                     messages.success(request, "Password doesn't match!")
                     return render(request, 'usersignup.html')
+
+
+def userlogin(request):
+    if request.method == 'POST':
+        user_select = request.POST['selecteduser']
+
+        if user_select == "headmaster":
+            pass
+        elif user_select == "teacher":
+            pass
+        else:
+            std_roll = request.POST['stdroll']
+            std_pass = request.POST['stdpass']
+
+            stdlogin = student_account.objects.filter(
+                s_roll=std_roll, s_pass=std_pass)
+            if stdlogin:
+                return redirect('student/loginsuccess/')
+    else:
+        return render(request, 'userlogin.html')
