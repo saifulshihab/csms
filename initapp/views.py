@@ -28,8 +28,9 @@ def userbacklogin(request):
 
 def userregistration(request):
     if request.method == 'POST':
-        user_select = request.POST.get('selecteduser')
-        if user_select == "Headmaster":
+        user_select = request.POST['selecteduser']
+        print(user_select)
+        if user_select == "headmaster":
             userfullname = request.POST['userfullname']
             useremail = request.POST['useremail']
             userempid = request.POST['userempid']
@@ -43,18 +44,19 @@ def userregistration(request):
             if(check_headeid):
                 messages.success(
                     request, 'This employee id is already taken! Try again..')
+                return render(request, 'usersignup.html')
             else:
                 if userpass == usercpass:
-                head_account_create = head_account_create(
-                    h_fullname=userfullname, h_email=useremail, h_empid=userempid, h_pass=userpass, h_school=userschool, h_phone=userphone)
-                head_account_create.save()
-                messages.success(
-                    request, "Headmaster account created successfully!")
-                return render(request, 'usersignup.html')
+                    head_account_create = headmaster_account(
+                        h_fullname=userfullname, h_email=useremail, h_empid=userempid, h_pass=userpass, h_school=userschool, h_phone=userphone)
+                    head_account_create.save()
+                    messages.success(
+                        request, "Headmaster account created successfully!")
+                    return render(request, 'usersignup.html')
                 else:
                     messages.success(request, "Password doesn't match!")
                     return render(request, 'usersignup.html')
-        elif user_select == "Teacher":
+        elif user_select == "teacher":
             userfullname = request.POST['userfullname']
             useremail = request.POST['useremail']
             userempid = request.POST['userempid']
