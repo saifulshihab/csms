@@ -96,14 +96,10 @@ def userlogin(request):
         else:
             std_roll = request.POST['stdroll']
             std_pass = request.POST['stdpass']
-            std_sch = request.POST['select_school']
-            std_cls = request.POST['select_class']
+
             stdlogin = student_account.objects.filter(
-                s_roll=std_roll, s_pass=std_pass,s_class=std_cls,s_school=std_sch)
+                s_roll=std_roll, s_pass=std_pass)
             if stdlogin:
                 return redirect('student/loginsuccess/')
-            else:
-                messages.success(request,'Wrong login credential! Try again. ..')
-                return render(request, 'userlogin.html')
     else:
         return render(request, 'userlogin.html')
