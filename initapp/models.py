@@ -34,4 +34,4 @@ class student_account(models.Model):
     s_school = models.CharField(max_length=200, blank=False, null=False)
 
     def __str__(self):
-        return self.s_roll
+        return self.s_school
