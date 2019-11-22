@@ -78,15 +78,15 @@
                     <input type="number" placeholder="Enter Phone Number" name="userphone" id="userphone"
                         class="form-control" required>
                 </div>
-                <div class="form-group mt-2">
+                <div class="form-group mt-2 d-none">
                     <span class="d-inline-block mr-3 text-success">Select User Type</span>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="selecteduser" id="headmaster"
+                        <input class="form-check-input" type="radio" name="selecteduser" id="is_headmaster"
                             value="headmaster" required>
                         <label class="form-check-label" for="headmaster">Headmaster</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="selecteduser" id="teacher" value="teacher">
+                        <input class="form-check-input" type="radio" name="selecteduser" id="is_teacher" value="teacher">
                         <label class="form-check-label" for="teacher">Teacher</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -143,7 +143,7 @@
                         <option value="Mirpur Govt. High School">Mirpur Govt. High School</option>
                     </select>
                 </div>
-                <div class="form-group mt-2">
+                <div class="form-group mt-2 d-none">
                     <span class="d-inline-block mr-3 text-success">Select User Type</span>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="selecteduser" id="headmaster"
@@ -155,7 +155,7 @@
                         <label class="form-check-label" for="teacher">Teacher</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="selecteduser" id="student" value="student">
+                        <input class="form-check-input" type="radio" name="selecteduser" id="is_student" value="student">
                         <label class="form-check-label" for="student">Student</label>
                     </div>
                 </div>
@@ -174,14 +174,17 @@
     $("#headmaster").on("click", function () {
         $('#teacher_head_regform').slideDown();
         $('#student_regform').hide();
+        document.getElementById("is_headmaster").checked = true;
     });
     $("#teacher").on("click", function () {
         $('#teacher_head_regform').slideDown();
         $('#student_regform').hide();
+        document.getElementById("is_teacher").checked = true;
     });
     $("#student").on("click", function () {
         $('#teacher_head_regform').hide();
         $('#student_regform').slideDown();
+        document.getElementById("is_student").checked = true;
     });
 </script>
 {% endblock content %}
