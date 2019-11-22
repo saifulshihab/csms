@@ -60,6 +60,25 @@ def userregistration(request):
             usercpass = request.POST['usercpass']
             userschool = request.POST['userschool']
             userphone = request.POST['userphone']
+
+            check_teacherid = teacher_account.objects.filter(
+                t_empid=userempid)
+            if (check_teacherid):
+                messages.success(
+                    request, 'This teacher id is already taken! Try again..')
+                return render(request, 'usersignup.html')
+            else:
+                if userpass == usercpass:
+                    teacher_account_create = teacher_account(
+                        t_fullname=userfullname, t_email=useremail, t_empid=userempid, t_pass=userpass,
+                        t_school=userschool, t_phone=userphone)
+                    teacher_account_create.save()
+                    messages.success(
+                        request, "Teacher account created successfully!")
+                    return render(request, 'usersignup.html')
+                else:
+                    messages.success(request, "Password doesn't match!")
+                    return render(request, 'usersignup.html')
         else:
             student_roll = request.POST['student_roll']
             student_pass = request.POST['student_pass']
@@ -90,9 +109,29 @@ def userlogin(request):
         user_select = request.POST['selecteduser']
 
         if user_select == "headmaster":
-            pass
+            userempid= request.method['userempid']
+            userpass = request.method['userpass']
+            user = headmaster_account.authenticate(h_empid=userempid, h_pass=userpass)
+            if user is not None:
+                messages.success(
+                    request, "login successful!")
+            else:
+                messages.info(
+                    request, "Invalid login!")
+                return redirect('userlogin.html')
+
         elif user_select == "teacher":
-            pass
+            userempid = request.method['userempid']
+            userpass = request.method['userpass']
+            user = teacher_account.authenticate(t_empid=userempid, t_pass=userpass)
+            if user is not None:
+                messages.info(
+                    request, "Student account created successfully!")
+            else:
+                messages.info(
+                    request, "Invalid login!")
+                return redirect('userlogin.html')
+
         else:
             std_roll = request.POST['stdroll']
             std_pass = request.POST['stdpass']
