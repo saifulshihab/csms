@@ -109,28 +109,26 @@ def userlogin(request):
         user_select = request.POST['selecteduser']
 
         if user_select == "headmaster":
-            userempid= request.method['userempid']
-            userpass = request.method['userpass']
-            user = headmaster_account.authenticate(h_empid=userempid, h_pass=userpass)
-            if user is not None:
-                messages.success(
-                    request, "login successful!")
+            userempid= request.POST['userempid']
+            userpass = request.POST['userpass']
+            login = headmaster_account.objects.filter(h_empid=userempid, h_pass=userpass)
+            if login:
+                 return render(request, 'usersignup.html')
+
             else:
-                messages.info(
-                    request, "Invalid login!")
-                return redirect('userlogin.html')
+                messages.success(request, "Invalid credential! Try again..")
+                return render(request, 'userlogin.html')
 
         elif user_select == "teacher":
-            userempid = request.method['userempid']
-            userpass = request.method['userpass']
-            user = teacher_account.authenticate(t_empid=userempid, t_pass=userpass)
-            if user is not None:
-                messages.info(
-                    request, "Student account created successfully!")
+            userempid = request.POST['userempid']
+            userpass = request.POST['userpass']
+            login = teacher_account.objects.filter(t_empid=userempid, t_pass=userpass)
+            if login:
+                return render(request, 'usersignup.html')
+
             else:
-                messages.info(
-                    request, "Invalid login!")
-                return redirect('userlogin.html')
+                messages.success(request, "Invalid credential! Try again..")
+                return render(request, 'userlogin.html')
 
         else:
             std_roll = request.POST['stdroll']
