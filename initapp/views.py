@@ -76,6 +76,8 @@ def userregistration(request):
                     messages.success(
                         request, "Teacher account created successfully!")
                     return render(request, 'usersignup.html')
+
+
                 else:
                     messages.success(request, "Password doesn't match!")
                     return render(request, 'usersignup.html')
@@ -113,7 +115,7 @@ def userlogin(request):
             userpass = request.POST['userpass']
             login = headmaster_account.objects.filter(h_empid=userempid, h_pass=userpass)
             if login:
-                 return render(request, 'usersignup.html')
+                 return redirect('headmaster/')
 
             else:
                 messages.success(request, "Invalid credential! Try again..")
@@ -124,7 +126,7 @@ def userlogin(request):
             userpass = request.POST['userpass']
             login = teacher_account.objects.filter(t_empid=userempid, t_pass=userpass)
             if login:
-                return render(request, 'usersignup.html')
+                return redirect('teacher/')
 
             else:
                 messages.success(request, "Invalid credential! Try again..")
