@@ -1,6 +1,23 @@
 body {
   background-color: whitesmoke;
 }
+/*base html*/
+.right_link ul {
+  list-style: none;
+}
+.right_link ul li {
+  float: left;
+  padding: 0px 20px;
+}
+.right_link ul li a {
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+}
+.right_link ul li a:hover {
+  color: #909090;
+}
+/*base html*/
 .userSelect {
   position: absolute;
   margin: auto;
