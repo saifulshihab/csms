@@ -69,3 +69,9 @@ def offcierLogin(request):
             return render(request, 'dashboard.html')
         else:
             return render(request, 'login.html')
+def logout(request):
+    try:
+        del request.session['empid']
+    except KeyError:
+        pass
+    return redirect('home')
