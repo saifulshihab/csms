@@ -8,7 +8,10 @@ from django.contrib import messages
 
 
 def enterOfficer(request):
-    return render(request, 'login.html')
+    if request.session.has_key('empid'):
+        return render(request, 'dashboard.html')
+    else:
+        return render(request, 'login.html')
 
 
 def registration(request):
@@ -56,7 +59,13 @@ def offcierLogin(request):
         login = officer_account.objects.filter(oempid=oempid, opass=opass)
 
         if login:
+            request.session['empid']=oempid
             return render(request, 'dashboard.html')
         else:
             messages.success(request, "Invalid credential! Try again..")
+            return render(request, 'login.html')
+    else:
+        if request.session.has_key('empid'):
+            return render(request, 'dashboard.html')
+        else:
             return render(request, 'login.html')
