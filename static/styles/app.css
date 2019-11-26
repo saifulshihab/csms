@@ -121,7 +121,6 @@ body {
   color: #00b0d9;
   transition: 0.3s all ease;
 }
-
 .side_menu i {
   margin-right: 10px;
 }
@@ -165,3 +164,25 @@ body {
   margin-top: -20px;
 }
 /*officer dashboard*/
+/*Headmaster dashboaard start*/
+#headmaster_dashboard .sidebar {
+  background: #191b1e;
+}
+#headmaster_dashboard .side_menu a {
+  color: #a06900;
+}
+#headmaster_dashboard .side_menu a:hover {
+  color: #00b0d9;
+}
+/*Headmaster dashboaard*/
+/*Teacher dashboaard start*/
+#teacher_dashboard .sidebar {
+  background: #2b1f37;
+}
+#teacher_dashboard .side_menu a {
+  color: #9a72c2;
+}
+#teacher_dashboard .side_menu a:hover {
+  color: #a06900;
+}
+/*Teacher dashboaard*/
