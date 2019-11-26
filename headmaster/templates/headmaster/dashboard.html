@@ -1,10 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<head>
-    <title>Headmaster Dashboard | CSMS</title>
-</head>
-<div id="headmaster_dashboard">
+<div id="officer_dashboard">
     <div class="row">
         <div class="col-3">
             <div class="sidebar">
@@ -21,8 +17,101 @@
         <div class="clearfix"></div>
         <div class="col-9">
             <div class="" id="page_content">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="school">
+                            <div class="school_name">
+                                <a href="school.html">
+                                    <h5>Dhanmondi Boys High School</h5>
+                                </a>
+                            </div>
+                            <div class="school_info">
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #1ca849;">877</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Total number of student</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #b505b5;">82%</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Attendance</p>
+                                        <p class="attntxt">Last 30 days</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #ff7a00;">98%</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Passed</p>
+                                        <p class="restxt">Half yearly exam 2019</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="school">
+                            <div class="school_name">
+                                <a href="#">
+                                    <h5>Assign Teacher</h5>
+                                </a>
+                            </div>
+                            <div class="school_info">
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #1ca849;">8277</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Total number of Teacher</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="school">
+                            <div class="school_name">
+                                <a href="#">
+                                    <h5>Teacher Pending</h5>
+                                </a>
+                            </div>
+                            <div class="school_info">
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #1ca849;">8277</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Total number of Pending Request</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+
+
 {% endblock content %}

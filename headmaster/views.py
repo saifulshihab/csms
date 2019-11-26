@@ -16,3 +16,6 @@ def head_logout(request):
     except KeyError:
         pass
     return redirect('home')
+    
+def about(request):
+    return render(request, 'about.html')
