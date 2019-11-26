@@ -1,2 +1,118 @@
-<p>Headmaster dashboard</p>
-<h1>Headmaster</h1>
+{% extends 'base.html' %}
+{% block content %}
+<div id="dashboard">
+    <div class="row">
+        <div class="col-3">
+            <div class="sidebar">
+                <div class="side_menu" class="list-group pt">
+                    <a href="#Welcome" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    <a href="#customer-list" class="list-group-item"><i class="fab fa-rev"></i>Teacher Pending
+                        Request</a>
+                    <a href="logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-9">
+            <div class="" id="page_content">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="school">
+                            <div class="school_name">
+                                <a href="teacherassign.html">
+                                    <h5>Assign Teacher</h5>
+                                </a>
+                            </div>
+                            <div class="school_info">
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #1ca849;">877</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Total number of Teacher in this school</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+
+                    <div class="col-4">
+                        <div class="school">
+                            <div class="school_name">
+                                <a href="studentinformation.html">
+                                    <h5>Student Information</h5>
+                                </a>
+                            </div>
+                            <div class="school_info">
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #1ca849;">8277</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Total number of student</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #b505b5;">88%</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Attendance</p>
+                                        <p class="attntxt">Last 30 days</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #ff7a00;">88%</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Passed</p>
+                                        <p class="restxt">Half yearly exam 2019</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="school">
+                            <div class="school_name">
+                                <a href="teacherpending.html">
+                                    <h5>Pending Teacher Request</h5>
+                                </a>
+                            </div>
+                            <div class="school_info">
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #1ca849;">877</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Number of pending request</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
+
+
+{% endblock content %}
