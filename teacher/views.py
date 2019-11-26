@@ -1,6 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import teacher
-from django.contrib import messages
 # Create your views here.
+
+
 def dashboard(request):
-    return render(request, 'teacher/dashboard.html')
+    if request.session.has_key('teacher_eid'):
+        return render(request, 'teacher/dashboard.html')
+    else:
+        return redirect('userlogin')
+
+def teacher_logout(request):
+    try:
+        del request.session['teacher_eid']
+    except KeyError:
+        pass
+    return redirect('home')
