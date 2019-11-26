@@ -10,6 +10,10 @@ def home(request):
     return render(request, 'index.html')
 
 
+def about(request):
+    return render(request, 'about.html')
+
+
 def index(request):
     return render(request, 'index.html')
 
@@ -77,7 +81,6 @@ def userregistration(request):
                         request, "Teacher account created successfully!")
                     return render(request, 'usersignup.html')
 
-
                 else:
                     messages.success(request, "Password doesn't match!")
                     return render(request, 'usersignup.html')
@@ -111,11 +114,12 @@ def userlogin(request):
         user_select = request.POST['selecteduser']
 
         if user_select == "headmaster":
-            userempid= request.POST['userempid']
+            userempid = request.POST['userempid']
             userpass = request.POST['userpass']
-            login = headmaster_account.objects.filter(h_empid=userempid, h_pass=userpass)
+            login = headmaster_account.objects.filter(
+                h_empid=userempid, h_pass=userpass)
             if login:
-                 return redirect('headmaster/')
+                return redirect('headmaster/')
 
             else:
                 messages.success(request, "Invalid credential! Try again..")
@@ -124,7 +128,8 @@ def userlogin(request):
         elif user_select == "teacher":
             userempid = request.POST['userempid']
             userpass = request.POST['userpass']
-            login = teacher_account.objects.filter(t_empid=userempid, t_pass=userpass)
+            login = teacher_account.objects.filter(
+                t_empid=userempid, t_pass=userpass)
             if login:
                 return redirect('teacher/')
 
@@ -139,11 +144,12 @@ def userlogin(request):
             std_cls = request.POST['select_class']
 
             stdlogin = student_account.objects.filter(
-                s_roll=std_roll, s_pass=std_pass,s_school = std_sch, s_class=std_cls)
+                s_roll=std_roll, s_pass=std_pass, s_school=std_sch, s_class=std_cls)
             if stdlogin:
                 return redirect('student/loginsuccess/')
             else:
-                messages.success(request,"Wrong login credential! Try again. ..")
+                messages.success(
+                    request, "Wrong login credential! Try again. ..")
                 return render(request, 'userlogin.html')
     else:
         return render(request, 'userlogin.html')
