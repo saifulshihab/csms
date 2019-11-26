@@ -1,2 +1,28 @@
-<p>Headmaster dashboard</p>
-<h1>Headmaster</h1>
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+    <title>Headmaster Dashboard | CSMS</title>
+</head>
+<div id="headmaster_dashboard">
+    <div class="row">
+        <div class="col-3">
+            <div class="sidebar">
+                <div class="side_menu" class="list-group pt">
+                    <a href="#Welcome" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    <a href="#customer-list" class="list-group-item"><i class="fab fa-rev"></i>Teacher Pending
+                        Request</a>
+                    <a href="#order" class="list-group-item"><i class="far fa-plus-square"></i>Assign Teacher</a>
+                    <a href="#order" class="list-group-item"><i class="far fa-user-circle"></i>My Account</a>
+                    <a href="logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-9">
+            <div class="" id="page_content">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
