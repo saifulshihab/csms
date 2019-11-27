@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="officer_dashboard">
+    <div class="row">
+        <div class="col-3">
+            <div class="sidebar">
+                <div class="side_menu" class="list-group pt">
+                    <a href="#Welcome" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    <a href="#customer-list" class="list-group-item"><i class="fab fa-rev"></i>Headmaster Pending
+                        Request</a>
+                    <a href="#order" class="list-group-item"><i class="far fa-comments"></i>Student Feedback</a>
+                    <a href="logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-9">
+            <div class="" id="page_content">
+                <div class="page-content">
+                    <div class="container">
+                        <div class="school_wrap">
+                            <div class="school_name mb-5">
+                                <h1>{{school.schoolName}}</h1>
+                            </div>
+                            <div class="total_student">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 class="float-left">Total Number Of Student</h3>
+                                        <span class="float-right">
+                                            <h3>{{school.totalStudent}}</h3>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="total_teacher">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 class="float-left">Total Teacher</h3>
+                                        <span class="float-right">
+                                            <h3>{{school.totalTeacher}}</h3>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-secondary">Male Teacher 12</p>
+                                        <p class="text-secondary">Female Teacher 4</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="attendance">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="attdays float-left">
+                                            <h3 class="">Attendance</h3>
+                                            <p class="text-secondary">Last 30 days</p>
+                                        </div>
+                                        <span class="float-right">
+                                            <h3>{{school.attendance_percentage}}%</h3>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actiontab mt-4">
+                            <div class="actiontab-nav bg-secondary">
+                                <div class="row">
+
+                                    <div class="col-3 navbtnwrap">
+                                        <div class="navbtn">
+                                            <input type='radio' value='1' name='radio' id='radio1' />
+                                            <label for='radio1'>Headmaster</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 navbtnwrap">
+                                        <div class="navbtn">
+                                            <input type='radio' value='1' name='radio' id='radio2' />
+                                            <label for='radio2'>All Teacher</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 navbtnwrap">
+                                        <div class="navbtn">
+                                            <input type='radio' value='1' name='radio' id='radio3' />
+                                            <label for='radio3'>Student Feedback</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 navbtnwrap">
+                                        <div class="navbtn">
+                                            <input type='radio' value='1' name='radio' id='radio4' />
+                                            <label for='radio4'>Assign Coordinator</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="actiontab-body">
+                                <div class="actiontab-content" id="headmaster">
+                                    <div class="row mt-2">
+                                        <div class="col-3">
+                                            <h5>Headmaster Name:</h5>
+                                            <h5>Employee ID:</h5>
+                                            <h5>Qualification</h5>
+                                            <h5>Phone Number</h5>
+                                            <button class="btn btn-sm btn-success">Contact</button>
+                                        </div>
+                                        <div class="col-3">
+                                            <h5>Md. Ariful Islam</h5>
+                                            <h5>H1</h5>
+                                            <h5>MBA</h5>
+                                            <h5>+8801782555256</h5>
+                                        </div>
+                                        <div class="col-3"></div>
+                                        <div class="col-3"></div>
+                                    </div>
+                                </div>
+                                <div class="actiontab-content" id="allteacher">
+
+                                    <div class="t-list">
+                                        <table>
+                                            <tr>
+                                                <th>Teacher EmpID</th>
+                                                <th>Teacher Name</th>
+                                                <th>Qualification</th>
+                                                <th>Performance</th>
+                                            </tr>
+                                            <tr>
+                                                <td>T1</td>
+                                                <td>Abdul Hakim</td>
+                                                <td>BBA</td>
+                                                <td>Good</td>
+                                            </tr>
+                                            <tr>
+                                                <td>T1</td>
+                                                <td>Abdul Hakim</td>
+                                                <td>BBA</td>
+                                                <td>Good</td>
+                                            </tr>
+                                            <tr>
+                                                <td>T1</td>
+                                                <td>Abdul Hakim</td>
+                                                <td>BBA</td>
+                                                <td>Good</td>
+                                            </tr>
+                                            <tr>
+                                                <td>T1</td>
+                                                <td>Abdul Hakim</td>
+                                                <td>BBA</td>
+                                                <td>Good</td>
+                                            </tr>
+                                            <tr>
+                                                <td>T1</td>
+                                                <td>Abdul Hakim</td>
+                                                <td>BBA</td>
+                                                <td>Good</td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="actiontab-content" id="stdfb">
+                                    <div class="f-list">
+                                        <table>
+                                            <tr>
+                                                <th>Feedback ID</th>
+                                                <th>Feedback</th>
+                                            </tr>
+                                            <tr>
+                                                <td>f1</td>
+                                                <td>I am 0000. We need multimedioa classromm</td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="actiontab-content" id="assco">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="">Select Co-ordinator</label>
+                                            <select name="" id="" class="form-control">
+                                                <option value="">Saiful islam</option>
+                                                <option value="">Saimon Hotel</option>
+                                                <option value="">Roy Joy</option>
+                                                <option value="">Saiful islam</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-sm btn-primary">Assign</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#headmaster").hide();
+        $("#allteacher").hide();
+        $("#stdfb").hide();
+        $("#assco").hide();
+        $("#radio1").click(function () {
+            $("#headmaster").show();
+            $("#allteacher").hide();
+            $("#stdfb").hide();
+            $("#assco").hide();
+        })
+        $("#radio2").click(function () {
+            $("#headmaster").hide();
+            $("#allteacher").show();
+            $("#stdfb").hide();
+            $("#assco").hide();
+        })
+        $("#radio3").click(function () {
+            $("#headmaster").hide();
+            $("#allteacher").hide();
+            $("#stdfb").show();
+            $("#assco").hide();
+        })
+        $("#radio4").click(function () {
+            $("#headmaster").hide();
+            $("#allteacher").hide();
+            $("#stdfb").hide();
+            $("#assco").show();
+        })
+    })</script>
+{% endblock content %}
