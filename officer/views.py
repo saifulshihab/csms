@@ -1,15 +1,16 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
 from officer.models import officer_account
 from django.contrib import messages
-
+from school.models import schoolInfo
 # Create your views here.
 
 
 def enterOfficer(request):
     if request.session.has_key('empid'):
-        return render(request, 'dashboard.html')
+        school = schoolInfo.objects.all()
+        return render(request, 'dashboard.html', {'school': school})
     else:
         return render(request, 'login.html')
 
@@ -59,7 +60,7 @@ def offcierLogin(request):
         login = officer_account.objects.filter(oempid=oempid, opass=opass)
 
         if login:
-            request.session['empid']=oempid
+            request.session['empid'] = oempid
             return render(request, 'dashboard.html')
         else:
             messages.success(request, "Invalid credential! Try again..")
@@ -69,9 +70,20 @@ def offcierLogin(request):
             return render(request, 'dashboard.html')
         else:
             return render(request, 'login.html')
+
+
 def logout(request):
     try:
         del request.session['empid']
     except KeyError:
         pass
     return redirect('home')
+
+
+def school_detail(request, school_eiin):
+    try:
+        obj = schoolInfo.objects.get(SchoolEIIN=school_eiin)
+    except schoolInfo.DoesNotExist:
+        raise Http404
+    context = {'school': obj}
+    return render(request, 'school_detail_view.html', context)

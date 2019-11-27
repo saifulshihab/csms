@@ -7,6 +7,8 @@ urlpatterns = [
     path('backlogin', views.backlogin, name="backlogin"),
     path('officerReg', views.officerReg, name="officerReg"),
     path('offcierLogin', views.offcierLogin, name="offcierLogin"),
-    path('logout', views.logout, name="logout")
+    path('logout', views.logout, name="logout"),
+    path('school_detail/<str:school_eiin>/',
+         views.school_detail, name="school_detail")
 
 ]

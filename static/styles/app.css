@@ -131,6 +131,7 @@ body {
   background: white;
   border-radius: 10px;
   height: 300px;
+  box-shadow: 5px 10px 18px #888888;
 }
 .school_info {
   height: 250px;
@@ -138,12 +139,16 @@ body {
 }
 #page_content .school .school_name {
   background: #78d5f7;
-  height: 35px;
-  padding: 5px;
+  height: 55px;
+  padding: 5px 35px;
   border-radius: 10px 10px 0 0;
 }
 .school_name a {
-  color: #373737;
+  color: #424242;
+  text-decoration: none;
+}
+.school_name a:hover {
+  color: #252525;
 }
 #page_content .info {
   height: 60px;
@@ -186,3 +191,22 @@ body {
   color: #a06900;
 }
 /*Teacher dashboaard*/
+
+/*school details view css*/
+.actiontab-nav .navbtn input {
+  visibility: hidden;
+}
+.actiontab-nav .navbtn label {
+  color: white;
+  text-align: center;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.navbtn input:checked + label {
+  border-bottom: 3px solid #ddd;
+  margin-right: -2px;
+}
+.navbtnwrap {
+  text-align: center;
+}
