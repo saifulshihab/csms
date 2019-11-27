@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.contrib import messages
 
@@ -119,6 +118,7 @@ def userlogin(request):
             login = headmaster_account.objects.filter(
                 h_empid=userempid, h_pass=userpass)
             if login:
+                request.session['headmaster_eid'] = userempid
                 return redirect('headmaster/')
 
             else:
@@ -131,8 +131,8 @@ def userlogin(request):
             login = teacher_account.objects.filter(
                 t_empid=userempid, t_pass=userpass)
             if login:
+                request.session['teacher_eid'] = userempid
                 return redirect('teacher/')
-
             else:
                 messages.success(request, "Invalid credential! Try again..")
                 return render(request, 'userlogin.html')
@@ -152,4 +152,9 @@ def userlogin(request):
                     request, "Wrong login credential! Try again. ..")
                 return render(request, 'userlogin.html')
     else:
-        return render(request, 'userlogin.html')
+        if request.session.has_key('headmaster_eid'):
+            return redirect('headmaster/')
+        elif request.session.has_key('teacher_eid'):
+            return redirect('teacher/')
+        else:
+            return render(request, 'userlogin.html')

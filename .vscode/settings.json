@@ -1,3 +1,4 @@
 {
-    "files.autoSave": "afterDelay"
+  "files.autoSave": "afterDelay",
+  "python.linting.pylintArgs": ["--load-plugins=pylint_django"]
 }
