@@ -150,6 +150,12 @@ body {
 .school_name a:hover {
   color: #252525;
 }
+.school_wrap {
+  padding: 15px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 19px #888;
+}
 #page_content .info {
   height: 60px;
   padding: 0px 10px;
@@ -193,6 +199,11 @@ body {
 /*Teacher dashboaard*/
 
 /*school details view css*/
+.actiontab-nav {
+  background: rgb(60, 60, 60);
+  border-radius: 5px;
+  box-shadow: 3px 3px 19px #888;
+}
 .actiontab-nav .navbtn input {
   visibility: hidden;
 }

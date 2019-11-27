@@ -20,14 +20,15 @@
                     <div class="container">
                         <div class="school_wrap">
                             <div class="school_name mb-5">
-                                <h1>{{school.schoolName}}</h1>
+                                <h1 style="font-weight:bold">{{school.schoolName}}</h1>
+                                <div style="padding: 1px;background:#4b484b"></div>
                             </div>
                             <div class="total_student">
                                 <div class="row">
                                     <div class="col">
                                         <h3 class="float-left">Total Number Of Student</h3>
                                         <span class="float-right">
-                                            <h3>{{school.totalStudent}}</h3>
+                                            <h3 style="color: #1ca849;font-weight:bold">{{school.totalStudent}}</h3>
                                         </span>
                                     </div>
                                 </div>
@@ -37,7 +38,7 @@
                                     <div class="col">
                                         <h3 class="float-left">Total Teacher</h3>
                                         <span class="float-right">
-                                            <h3>{{school.totalTeacher}}</h3>
+                                            <h3 style="color: #db0080;font-weight:bold">{{school.totalTeacher}}</h3>
                                         </span>
                                     </div>
                                 </div>
@@ -56,14 +57,15 @@
                                             <p class="text-secondary">Last 30 days</p>
                                         </div>
                                         <span class="float-right">
-                                            <h3>{{school.attendance_percentage}}%</h3>
+                                            <h3 style="color: #b505b5;font-weight:bold">
+                                                {{school.attendance_percentage}}%</h3>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="actiontab mt-4">
-                            <div class="actiontab-nav bg-secondary">
+                            <div class="actiontab-nav">
                                 <div class="row">
 
                                     <div class="col-3 navbtnwrap">
