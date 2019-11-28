@@ -33,5 +33,8 @@ class schoolInfo(models.Model):
         blank=False, null=False, default=1)
     pass_percentage = models.IntegerField(blank=False, null=False, default=1)
 
+    def __str__(self):
+        return self.SchoolEIIN
+
     def get_absolute_url(self):
         return f"/school_detail/{self.SchoolEIIN}/"

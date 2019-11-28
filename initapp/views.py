@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib import messages
-
 from initapp.models import student_account, headmaster_account, teacher_account
+from school.models import schoolInfo
 
 
 def home(request):
@@ -27,62 +27,57 @@ def userbacklogin(request):
 
 def userregistration(request):
     if request.method == 'POST':
-        user_select = request.POST['selecteduser']
-        print(user_select)
+        user_select = request.POST['selecteduser']       
         if user_select == "headmaster":
-            userfullname = request.POST['userfullname']
-            useremail = request.POST['useremail']
-            userempid = request.POST['userempid']
-            userpass = request.POST['userpass']
-            usercpass = request.POST['usercpass']
-            userschool = request.POST['userschool']
-            userphone = request.POST['userphone']
-
-            check_headeid = headmaster_account.objects.filter(
-                h_empid=userempid)
-            if(check_headeid):
-                messages.success(
-                    request, 'This employee id is already taken! Try again..')
-                return render(request, 'usersignup.html')
-            else:
-                if userpass == usercpass:
-                    head_account_create = headmaster_account(
-                        h_fullname=userfullname, h_email=useremail, h_empid=userempid, h_pass=userpass, h_school=userschool, h_phone=userphone)
-                    head_account_create.save()
+            check_eiin = schoolInfo.objects.filter(
+                SchoolEIIN=request.POST['user_eiin'])
+            if check_eiin:
+                check_headeid = headmaster_account.objects.filter(
+                    h_empid=request.POST['userempid'])
+                if(check_headeid):
                     messages.success(
-                        request, "Headmaster account created successfully!")
+                        request, 'This employee id is already taken! Try again..')
                     return render(request, 'usersignup.html')
                 else:
-                    messages.success(request, "Password doesn't match!")
-                    return render(request, 'usersignup.html')
+                    if request.POST['userpass'] == request.POST['usercpass']:
+                        head_account_create = headmaster_account(
+                            h_fullname=request.POST['userfullname'], h_email=request.POST['useremail'], h_empid=request.POST['userempid'], h_pass=request.POST['userpass'], h_phone=request.POST['userphone'], sch_eiin=request.POST['user_eiin'])
+                        head_account_create.save()
+                        messages.success(
+                            request, "Headmaster account created successfully!")
+                        return render(request, 'usersignup.html')
+                    else:
+                        messages.success(request, "Password doesn't match!")
+                        return render(request, 'usersignup.html')
+            else:
+                messages.success(
+                    request, "This school info isn't registered yet in system! Try back later. ..")
+                return render(request, 'usersignup.html')
         elif user_select == "teacher":
-            userfullname = request.POST['userfullname']
-            useremail = request.POST['useremail']
-            userempid = request.POST['userempid']
-            userpass = request.POST['userpass']
-            usercpass = request.POST['usercpass']
-            userschool = request.POST['userschool']
-            userphone = request.POST['userphone']
-
-            check_teacherid = teacher_account.objects.filter(
-                t_empid=userempid)
-            if (check_teacherid):
-                messages.success(
-                    request, 'This teacher id is already taken! Try again..')
-                return render(request, 'usersignup.html')
-            else:
-                if userpass == usercpass:
-                    teacher_account_create = teacher_account(
-                        t_fullname=userfullname, t_email=useremail, t_empid=userempid, t_pass=userpass,
-                        t_school=userschool, t_phone=userphone)
-                    teacher_account_create.save()
+            check_eiin = schoolInfo.objects.filter(
+                SchoolEIIN=request.POST['user_eiin'])
+            if check_eiin:
+                check_teach_id = teacher_account.objects.filter(
+                    t_empid=request.POST['userempid'])
+                if(check_teach_id):
                     messages.success(
-                        request, "Teacher account created successfully!")
+                        request, 'This employee id is already taken! Try again..')
                     return render(request, 'usersignup.html')
-
                 else:
-                    messages.success(request, "Password doesn't match!")
-                    return render(request, 'usersignup.html')
+                    if request.POST['userpass'] == request.POST['usercpass']:
+                        teach_account_create = teacher_account(
+                            t_fullname=request.POST['userfullname'], t_email=request.POST['useremail'], t_empid=request.POST['userempid'], t_pass=request.POST['userpass'], t_phone=request.POST['userphone'], sch_eiin=request.POST['user_eiin'])
+                        teach_account_create.save()
+                        messages.success(
+                            request, "Teacher account created successfully!")
+                        return render(request, 'usersignup.html')
+                    else:
+                        messages.success(request, "Password doesn't match!")
+                        return render(request, 'usersignup.html')
+            else:
+                messages.success(
+                    request, "This school info isn't registered yet in system! Try back later. ..")
+                return render(request, 'usersignup.html')
         else:
             student_roll = request.POST['student_roll']
             student_pass = request.POST['student_pass']
@@ -152,9 +147,9 @@ def userlogin(request):
                     request, "Wrong login credential! Try again. ..")
                 return render(request, 'userlogin.html')
     else:
-        if request.session.has_key('headmaster_eid'):
+        '''if request.session.has_key('headmaster_eid'):
             return redirect('headmaster/')
         elif request.session.has_key('teacher_eid'):
             return redirect('teacher/')
-        else:
-            return render(request, 'userlogin.html')
+        else:'''
+        return render(request, 'userlogin.html')
