@@ -221,3 +221,9 @@ body {
 .navbtnwrap {
   text-align: center;
 }
+.actiontab-body {
+  margin-top: 20px;
+  background: white;
+  border-radius: 5px;
+  padding: 10px;
+}
