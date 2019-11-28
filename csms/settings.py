@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'student.apps.StudentConfig',
     'headmaster',
     'school',
+    'classInformation',
+
 ]
 
 MIDDLEWARE = [

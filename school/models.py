@@ -19,8 +19,8 @@ class schoolInfo(models.Model):
         ('St. Gregory’s High School', 'St. Gregory’s High School'),
         ('Motijheel Government Boys High school',
          'Motijheel Government Boys High school'),
-        ('Mirpur Govt. High School', 'Mirpur Govt. High School'),
-        ('Django', 'Django')
+        ('Mirpur Govt. High School', 'Mirpur Govt. High School')
+
     ]
     SchoolEIIN = models.CharField(
         primary_key=True, max_length=25, blank=False, null=False)
@@ -35,3 +35,5 @@ class schoolInfo(models.Model):
 
     def get_absolute_url(self):
         return f"/school_detail/{self.SchoolEIIN}/"
+    def __str__(self):
+        return self.schoolName

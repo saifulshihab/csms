@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.template import context
+from django.views.generic import CreateView
+
+from school.models import schoolInfo
 
 from initapp.models import student_account, headmaster_account, teacher_account
 
