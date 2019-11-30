@@ -23,8 +23,7 @@ class schoolInfo(models.Model):
     ]
     SchoolEIIN = models.CharField(
         primary_key=True, max_length=25, blank=False, null=False)
-    schoolName = models.CharField(
-        max_length=300, blank=False, null=False, choices=school_select)
+    schoolName = models.CharField(max_length=100, blank=False, null=False)
     schoolAddress = models.CharField(max_length=100, blank=False, null=False)
     totalStudent = models.IntegerField(blank=False, null=False)
     totalTeacher = models.IntegerField(blank=False, null=False)
