@@ -134,47 +134,30 @@
                                     </div>
                                 </div>
                                 <div class="actiontab-content" id="allteacher">
-
-                                    <div class="t-list">
+                                    <div class="t-list p-3">
                                         <table>
+                                            {% for t in teacher %}
                                             <tr>
                                                 <th>Teacher EmpID</th>
                                                 <th>Teacher Name</th>
-                                                <th>Qualification</th>
-                                                <th>Performance</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
                                             </tr>
                                             <tr>
-                                                <td>T1</td>
-                                                <td>Abdul Hakim</td>
-                                                <td>BBA</td>
-                                                <td>Good</td>
+                                                <td>{{t.t_empid}}-{{t.sch_eiin}}</td>
+                                                <td>{{t.t_fullname}}</td>
+                                                <td>{{t.t_email}}</td>
+                                                <td>{{t.phone}}</td>
                                             </tr>
-                                            <tr>
-                                                <td>T1</td>
-                                                <td>Abdul Hakim</td>
-                                                <td>BBA</td>
-                                                <td>Good</td>
-                                            </tr>
-                                            <tr>
-                                                <td>T1</td>
-                                                <td>Abdul Hakim</td>
-                                                <td>BBA</td>
-                                                <td>Good</td>
-                                            </tr>
-                                            <tr>
-                                                <td>T1</td>
-                                                <td>Abdul Hakim</td>
-                                                <td>BBA</td>
-                                                <td>Good</td>
-                                            </tr>
-                                            <tr>
-                                                <td>T1</td>
-                                                <td>Abdul Hakim</td>
-                                                <td>BBA</td>
-                                                <td>Good</td>
-                                            </tr>
-
+                                            {% endfor %}                                          
                                         </table>
+                                    </div>
+                                    <div class="">
+                                        {% if messages %}
+                                        {% for msg in messages %}
+                                        <p class="mt-5 text-danger">{{msg}}</p>
+                                        {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="actiontab-content" id="stdfb">
