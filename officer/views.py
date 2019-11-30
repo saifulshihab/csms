@@ -62,7 +62,8 @@ def offcierLogin(request):
 
         if login:
             request.session['empid'] = oempid
-            return render(request, 'dashboard.html')
+            school = schoolInfo.objects.all()
+            return render(request, 'dashboard.html', {'school': school})
         else:
             messages.success(request, "Invalid credential! Try again..")
             return render(request, 'login.html')
