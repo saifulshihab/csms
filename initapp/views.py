@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib import messages
-from initapp.models import student_account, headmaster_account, teacher_account, headmaster_verify
+from initapp.models import student_account, headmaster_account, teacher_account, headmaster_verify, teacher_verify
 from school.models import schoolInfo
 
 
@@ -57,7 +57,7 @@ def userregistration(request):
             check_eiin = schoolInfo.objects.filter(
                 SchoolEIIN=request.POST['user_eiin'])
             if check_eiin:
-                check_teach_id = teacher_account.objects.filter(
+                check_teach_id = teacher_verify.objects.filter(
                     t_empid=request.POST['userempid'])
                 if(check_teach_id):
                     messages.success(
@@ -65,11 +65,11 @@ def userregistration(request):
                     return render(request, 'usersignup.html')
                 else:
                     if request.POST['userpass'] == request.POST['usercpass']:
-                        teach_account_create = teacher_account(
+                        teach_account_verify_create = teacher_verify(
                             t_fullname=request.POST['userfullname'], t_email=request.POST['useremail'], t_empid=request.POST['userempid'], t_pass=request.POST['userpass'], t_phone=request.POST['userphone'], sch_eiin=request.POST['user_eiin'])
-                        teach_account_create.save()
+                        teach_account_verify_create.save()
                         messages.success(
-                            request, "Teacher account created successfully!")
+                            request, "Teacher account created successfully and wait for confirmation!")
                         return render(request, 'usersignup.html')
                     else:
                         messages.success(request, "Password doesn't match!")
