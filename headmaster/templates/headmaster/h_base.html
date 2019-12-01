@@ -1,0 +1,44 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Centralized School Monitoring System</title>
+    <link rel="icon" href="{% static 'images/logo.png'%}" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <script src="https://kit.fontawesome.com/a215bce284.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}">
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}" type="text/javascript"></script>
+</head>
+<body>
+<div id="officer_dashboard">
+    <div class="row">
+        <div class="col-3">
+            <div class="sidebar">
+                <div class="side_menu" class="list-group pt">
+                    <a href="" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    <a href="teacherverification" class="list-group-item"><i class="fab fa-rev"></i>Teacher Pending
+                        Request</a>
+                    <a href="#order" class="list-group-item"><i class="far fa-plus-square"></i>Assign Teacher</a>
+                    <a href="#order" class="list-group-item"><i class="far fa-user-circle"></i>My Account</a>
+                    <a href="head_logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-9">
+            <div class="" id="page_content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+

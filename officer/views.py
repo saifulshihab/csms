@@ -83,14 +83,14 @@ def logout(request):
     return redirect('home')
 
 
-def school_detail(request, school_eiin):   
+def school_detail(request, school_eiin):
     try:
         school_obj = schoolInfo.objects.get(SchoolEIIN=school_eiin)
         headmaster_obj = headmaster_account.objects.filter(sch_eiin=school_eiin)
         teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
         context = {'school': school_obj, 'headmaster': headmaster_obj}
         if headmaster_obj and teacher_list_obj:
-            headmaster_obj = headmaster_account.objects.get(sch_eiin=school_eiin)
+            headmaster_obj = headmaster_account.objects.get(sch_eiin=school_eiin)         
             teacher_list_obj = teacher_account.objects.all()
             context = {'school': school_obj, 'headmaster': headmaster_obj, 'teacher':teacher_list_obj} 
             return render(request, 'school_detail_view.html', context)
@@ -109,8 +109,14 @@ def school_detail(request, school_eiin):
             messages.success(request, "There are no headmaster/teacher yet registered!") 
             return render(request, 'school_detail_view.html', context)                              
     except schoolInfo.DoesNotExist:
-        raise Http404   
+        raise Http404
 
+def dash(request):
+    school = schoolInfo.objects.all()
+    return render(request, 'dashboard.html', {'school': school})
+def hpend(request):
+    hv = headmaster_verify.objects.all()
+    return render(request, 'hverify.html', {'hv': hv})
 
 def student_feedbacks(request):
     if request.session.has_key('empid'):

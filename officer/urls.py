@@ -13,6 +13,4 @@ urlpatterns = [
     path('student_feedbacks', views.student_feedbacks, name="student_feedback"),
     path('dash', views.dash, name="dash"),
     path('hpend', views.hpend, name="hpend")
-
-
 ]
