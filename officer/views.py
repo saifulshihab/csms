@@ -4,7 +4,8 @@ from django.shortcuts import redirect
 from officer.models import officer_account
 from django.contrib import messages
 from school.models import schoolInfo
-from initapp.models import headmaster_account
+from initapp.models import headmaster_account, teacher_account
+from student.models import student_feedback
 # Create your views here.
 
 
@@ -59,17 +60,21 @@ def offcierLogin(request):
         oempid = request.POST['oempid']
         opass = request.POST['opass']
         login = officer_account.objects.filter(oempid=oempid, opass=opass)
-
         if login:
             request.session['empid'] = oempid
             school = schoolInfo.objects.all()
+<<<<<<< HEAD
+            return render(request, 'dashboard.html', {'school': school})            
+=======
             return render(request, 'dashboard.html', {'school': school})
+>>>>>>> 2100ad23ccf678b7415a0a40d2f0f2fd8194fb8a
         else:
             messages.success(request, "Invalid credential! Try again..")
             return render(request, 'login.html')
     else:
         if request.session.has_key('empid'):
-            return render(request, 'dashboard.html')
+            school = schoolInfo.objects.all()
+            return render(request, 'dashboard.html', {'school': school})            
         else:
             return render(request, 'login.html')
 
@@ -86,13 +91,32 @@ def school_detail(request, school_eiin):
     try:
         school_obj = schoolInfo.objects.get(SchoolEIIN=school_eiin)
         headmaster_obj = headmaster_account.objects.filter(sch_eiin=school_eiin)
+        teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
         context = {'school': school_obj, 'headmaster': headmaster_obj}
-        if headmaster_obj:
+        if headmaster_obj and teacher_list_obj:
             headmaster_obj = headmaster_account.objects.get(sch_eiin=school_eiin)
+            teacher_list_obj = teacher_account.objects.all()
+            context = {'school': school_obj, 'headmaster': headmaster_obj, 'teacher':teacher_list_obj} 
+            return render(request, 'school_detail_view.html', context)
+        elif headmaster_obj:
+            headmaster_obj = headmaster_account.objects.get(sch_eiin=school_eiin)            
             context = {'school': school_obj, 'headmaster': headmaster_obj} 
-            return render(request, 'school_detail_view.html', context)
+            messages.success(request, "This school's teacher is not registered yet!")
+            return render(request, 'school_detail_view.html', context)            
+        elif teacher_list_obj:            
+            teacher_list_obj = teacher_account.objects.all()
+            context = {'school': school_obj, 'teacher':teacher_list_obj} 
+            messages.success(request, "This headmaster is not registered yet!")
+            return render(request, 'school_detail_view.html', context)            
         else:
-            messages.success(request, "This headmaster isn't registered yet!")
-            return render(request, 'school_detail_view.html', context)
+            context = {'school': school_obj}
+            messages.success(request, "There are no headmaster/teacher yet registered!") 
+            return render(request, 'school_detail_view.html', context)                              
     except schoolInfo.DoesNotExist:
         raise Http404   
+
+
+def student_feedbacks(request):
+    if request.session.has_key('empid'):
+        obj = student_feedback.objects.all()
+        return render(request, 'student_feedback.html', {'feedback' : obj})
