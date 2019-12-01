@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="officer_dashboard">
+    <div class="row">
+        <div class="col-3">
+            <div class="sidebar">
+                <div class="side_menu" class="list-group pt">
+                    <a href="dash" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    <a href="#order" class="list-group-item"><i class="far fa-comments"></i>Student Feedback</a>
+                    <a href="logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-9">
+            <div class="" id="page_content">
+                <div class="row">
+                    <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">Headmaster Name</th>
+                              <th scope="col">Headmaster Email</th>
+                              <th scope="col">Employee ID</th>
+                              <th scope="col">School EIIN</th>
+                               <th scope="col">Phone</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                           {% for head in hv %}
+                            <tr>
+                              <td>{{ head.h_fullname }}</td>
+                                <td>{{ head.h_email}}</td>
+                              <td>{{ head.h_empid }}</td>
+                              <td>{{ head.sch_eiin}}</td>
+                                <td> {{ head.h_phone}}</td>
+                                <td> <button href="" class="btn btn-sm btn-outline-success">Accept</button>  <button class="btn btn-sm btn-outline-danger">Reject</button> </td>
+                            </tr>
+
+                             {% endfor %}
+                          </tbody>
+                    </table>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

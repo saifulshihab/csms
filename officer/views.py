@@ -4,7 +4,9 @@ from django.shortcuts import redirect
 from officer.models import officer_account
 from django.contrib import messages
 from school.models import schoolInfo
-from initapp.models import headmaster_account
+from initapp.models import headmaster_account, headmaster_verify
+
+
 # Create your views here.
 
 
@@ -82,17 +84,31 @@ def logout(request):
     return redirect('home')
 
 
-def school_detail(request, school_eiin):   
+def school_detail(request, school_eiin):
     try:
         school_obj = schoolInfo.objects.get(SchoolEIIN=school_eiin)
         headmaster_obj = headmaster_account.objects.filter(sch_eiin=school_eiin)
         context = {'school': school_obj, 'headmaster': headmaster_obj}
         if headmaster_obj:
             headmaster_obj = headmaster_account.objects.get(sch_eiin=school_eiin)
-            context = {'school': school_obj, 'headmaster': headmaster_obj} 
+            context = {'school': school_obj, 'headmaster': headmaster_obj}
             return render(request, 'school_detail_view.html', context)
         else:
             messages.success(request, "This headmaster isn't registered yet!")
             return render(request, 'school_detail_view.html', context)
     except schoolInfo.DoesNotExist:
-        raise Http404   
+        raise Http404
+
+
+def dash(request):
+    school = schoolInfo.objects.all()
+    return render(request, 'dashboard.html', {'school': school})
+
+
+def hpend(request):
+    hv = headmaster_verify.objects.all()
+    return render(request, 'hverify.html', {'hv': hv})
+
+
+
+
