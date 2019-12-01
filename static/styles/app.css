@@ -64,6 +64,9 @@ body {
   margin-top: 50px;
   border-radius: 5px;
 }
+.usersignupform .select_radio label, .userloginform .select_radio label:hover{
+  cursor: pointer;
+}
 .offloginform .oreg_alert,
 .userloginform .oreg_alert,
 .officer-registration-form .oreg_alert {
