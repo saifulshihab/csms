@@ -1,0 +1,35 @@
+{% extends 'teacher/h_base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-9">
+            <div class="" id="page_content">
+                <div class="row">
+                    <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">Student Name</th>
+                              <th scope="col">Student Email</th>
+                              <th scope="col">Student ID</th>
+
+                                <th scope="col">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                           {% for teacher in tv %}
+
+                            <tr>
+                              <td>{{ student.t_fullname }}</td>
+                                <td>{{ student.t_email}}</td>
+                              <td>{{ student.t_empid }}</td>
+
+                                <td> <button href="" class="btn btn-sm btn-outline-success" >Accept</button>  <button class="btn btn-sm btn-outline-danger">Reject</button> </td>
+                            </tr>
+
+                             {% endfor %}
+                          </tbody>
+                    </table>
+            </div>
+            </div>
+        </div>
+</div>
+{% endblock %}
