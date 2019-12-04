@@ -1,6 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,31 +15,44 @@
     <link rel="stylesheet" href="{% static 'styles/app.css' %}">
     <script src="{% static 'js/jquery-3.4.1.min.js' %}" type="text/javascript"></script>
 </head>
+
 <body>
-<div id="officer_dashboard">
-    <div class="row">
-        <div class="col-3">
-            <div class="sidebar">
-                <div class="side_menu" class="list-group pt">
-                    <a href="" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    <a href="teacherverification" class="list-group-item"><i class="fab fa-rev"></i>Teacher Pending
-                        Request</a>
-                    <a href="#order" class="list-group-item"><i class="far fa-plus-square"></i>Assign Teacher</a>
-                    <a href="#order" class="list-group-item"><i class="far fa-user-circle"></i>My Account</a>
-                    <a href="head_logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+    <div id="officer_dashboard">
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="home"><i style="margin-right:15px" class="fas fa-school"></i>Centralized
+                School
+                Monitoring System</a>
+            <div class="right_link justify-content-end">
+                <ul class="">
+                    <li class=""><a class="" href="about">About</a></li>
+                    <li class=""><a class="" href="about">Blog</a></li>
+                    <li class=""><a class="" href="about">Features</a></li>
+                    <li class=""><a class="" href="about">FAQ</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row" style="margin-top: 56px;">
+            <div class="col-3">
+                <div class="sidebar">
+                    <div class="side_menu" class="list-group pt">
+                        <a href="" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <a href="teacherverification" class="list-group-item"><i class="fab fa-rev"></i>Teacher Pending
+                            Request</a>
+                        <a href="#order" class="list-group-item"><i class="far fa-plus-square"></i>Assign Teacher</a>
+                        <a href="#order" class="list-group-item"><i class="far fa-user-circle"></i>My Account</a>
+                        <a href="head_logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-9">
+                <div class="" id="page_content">
+                    {% block content %}
+                    {% endblock %}
                 </div>
             </div>
         </div>
-        <div class="clearfix"></div>
-        <div class="col-9">
-            <div class="" id="page_content">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
     </div>
-</div>
 </body>
+
 </html>
-
-

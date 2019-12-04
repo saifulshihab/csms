@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from officer.models import officer_account
 from django.contrib import messages
 from school.models import schoolInfo
-from initapp.models import headmaster_account, teacher_account
+from initapp.models import headmaster_account, teacher_account, headmaster_verify
 from student.models import student_feedback
 # Create your views here.
 
@@ -70,7 +70,7 @@ def offcierLogin(request):
     else:
         if request.session.has_key('empid'):
             school = schoolInfo.objects.all()
-            return render(request, 'dashboard.html', {'school': school})            
+            return render(request, 'dashboard.html', {'school': school})
         else:
             return render(request, 'login.html')
 
@@ -86,39 +86,49 @@ def logout(request):
 def school_detail(request, school_eiin):
     try:
         school_obj = schoolInfo.objects.get(SchoolEIIN=school_eiin)
-        headmaster_obj = headmaster_account.objects.filter(sch_eiin=school_eiin)
+        headmaster_obj = headmaster_account.objects.filter(
+            sch_eiin=school_eiin)
         teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
         context = {'school': school_obj, 'headmaster': headmaster_obj}
         if headmaster_obj and teacher_list_obj:
-            headmaster_obj = headmaster_account.objects.get(sch_eiin=school_eiin)         
+            headmaster_obj = headmaster_account.objects.get(
+                sch_eiin=school_eiin)
             teacher_list_obj = teacher_account.objects.all()
-            context = {'school': school_obj, 'headmaster': headmaster_obj, 'teacher':teacher_list_obj} 
+            context = {'school': school_obj,
+                       'headmaster': headmaster_obj, 'teacher': teacher_list_obj}
             return render(request, 'school_detail_view.html', context)
         elif headmaster_obj:
-            headmaster_obj = headmaster_account.objects.get(sch_eiin=school_eiin)            
-            context = {'school': school_obj, 'headmaster': headmaster_obj} 
-            messages.success(request, "This school's teacher is not registered yet!")
-            return render(request, 'school_detail_view.html', context)            
-        elif teacher_list_obj:            
+            headmaster_obj = headmaster_account.objects.get(
+                sch_eiin=school_eiin)
+            context = {'school': school_obj, 'headmaster': headmaster_obj}
+            messages.success(
+                request, "This school's teacher is not registered yet!")
+            return render(request, 'school_detail_view.html', context)
+        elif teacher_list_obj:
             teacher_list_obj = teacher_account.objects.all()
-            context = {'school': school_obj, 'teacher':teacher_list_obj} 
+            context = {'school': school_obj, 'teacher': teacher_list_obj}
             messages.success(request, "This headmaster is not registered yet!")
-            return render(request, 'school_detail_view.html', context)            
+            return render(request, 'school_detail_view.html', context)
         else:
             context = {'school': school_obj}
-            messages.success(request, "There are no headmaster/teacher yet registered!") 
-            return render(request, 'school_detail_view.html', context)                              
+            messages.success(
+                request, "There are no headmaster/teacher yet registered!")
+            return render(request, 'school_detail_view.html', context)
     except schoolInfo.DoesNotExist:
         raise Http404
+
 
 def dash(request):
     school = schoolInfo.objects.all()
     return render(request, 'dashboard.html', {'school': school})
+
+
 def hpend(request):
     hv = headmaster_verify.objects.all()
     return render(request, 'hverify.html', {'hv': hv})
 
+
 def student_feedbacks(request):
     if request.session.has_key('empid'):
         obj = student_feedback.objects.all()
-        return render(request, 'student_feedback.html', {'feedback' : obj})
+        return render(request, 'student_feedback.html', {'feedback': obj})

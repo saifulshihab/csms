@@ -16,34 +16,46 @@
             <div class="" id="page_content">
                 <div class="row">
                     <table class="table">
-                          <thead>
+                        <thead>
                             <tr>
-                              <th scope="col">Headmaster Name</th>
-                              <th scope="col">Headmaster Email</th>
-                              <th scope="col">Employee ID</th>
-                              <th scope="col">School EIIN</th>
-                               <th scope="col">Phone</th>
+                                <th scope="col">Headmaster Name</th>
+                                <th scope="col">Headmaster Email</th>
+                                <th scope="col">Employee ID</th>
+                                <th scope="col">School EIIN</th>
+                                <th scope="col">Phone</th>
                                 <th scope="col">Action</th>
                             </tr>
-                          </thead>
-                          <tbody>
-                           {% for head in hv %}
+                        </thead>
+                        <tbody>
+                            {% for head in hv %}
                             <tr>
-                              <td>{{ head.h_fullname }}</td>
+                                <td>{{ head.h_fullname }}</td>
                                 <td>{{ head.h_email}}</td>
-                              <td>{{ head.h_empid }}</td>
-                              <td>{{ head.sch_eiin}}</td>
+                                <td>{{ head.h_empid }}</td>
+                                <td>{{ head.sch_eiin}}</td>
                                 <td> {{ head.h_phone}}</td>
-                                <td> <button href="" class="btn btn-sm btn-outline-success" >Accept</button>  <button class="btn btn-sm btn-outline-danger">Reject</button> </td>
+                                <td> <button id=45 href="" class="accept btn btn-sm btn-outline-success">Accept</button>
+                                    <button class="btn btn-sm btn-outline-danger">Reject</button> </td>
                             </tr>
 
-                             {% endfor %}
-                          </tbody>
+                            {% endfor %}
+                        </tbody>
                     </table>
-            </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ids = $(this).attr('id');
+        $('.accept').click(function () {
+            alert(ids);
+        })
+    })
+
+</script>
+
+
 {% endblock content %}
