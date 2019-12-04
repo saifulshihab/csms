@@ -1,25 +1,89 @@
-{% extends 'base.html' %}
+{% extends 'teacher/h_base.html' %}
 {% block content %}
-<div id="teacher_dashboard">
-    <div class="row">
-        <div class="col-3">
-            <div class="sidebar">
-                <div class="side_menu" class="list-group pt">
-                    <a href="dash" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    <a href="hpend" class="list-group-item"><i class="fab fa-rev"></i>Student Pending
-                        Request</a>
-                    <a href="student_feedbacks" class="list-group-item"><i class="far fa-comments"></i>Student Feedback</a>
-                    <a href="{% url 'logout' %}" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="col-9">
-            <div class="" id="page_content">
+<div class="row">
+                    <div class="col-4">
+                        <div class="school">
+                            <div class="school_name">
+                                <a href="school.html">
+                                    <h5>School Information</h5>
+                                </a>
+                            </div>
+                            <div class="school_info">
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #1ca849;">877</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Total number of student</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #b505b5;">82%</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Attendance</p>
+                                        <p class="attntxt">Last 30 days</p>
+                                    </div>
+                                </div>
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #ff7a00;">98%</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Passed</p>
+                                        <p class="restxt">Half yearly exam 2019</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <form>
+                    <div class="col-4">
+                        <div class="school">
+                            <div class="school_name">
+                                <a href="#">
+                                    <h5>Students</h5>
+                                </a>
+                            </div>
+                            <div class="school_info">
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #1ca849;">8277</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Total number of Teacher</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="school">
+                            <div class="school_name">
+                                <a href="#">
+                                    <h5>Student Pending</h5>
+                                </a>
+                            </div>
+                            <div class="school_info">
+                                <div class="info">
+                                    <div class="number float-left">
+                                        <h1 style="color: #1ca849;">8277</h1>
+                                    </div>
+                                    <div class="text">
+                                        <p>Total number of Pending Request</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+<form>
                                         <div class="form-group">
-                                            <label for="">Select class</label>
+                                            <label for="">Select Class</label>
                                             <select name="" id="" class="form-control">
                                                 <option value="">6</option>
                                                 <option value="">7</option>
@@ -30,11 +94,5 @@
                                         </div>
                                         <button type="submit" class="btn btn-sm btn-primary">Assign</button>
                                     </form>
-                <div class="row">
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock content %}
