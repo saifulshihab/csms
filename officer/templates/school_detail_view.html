@@ -134,23 +134,30 @@
                                     </div>
                                 </div>
                                 <div class="actiontab-content" id="allteacher">
-                                    <div class="t-list p-3">
-                                        <table>
+                                    <div class="t-list p-3">                                      
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">Teacher EmpID</th>
+                                                <th scope="col">Teacher Name</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Phone</th>
+                                                <th scope="col">EIIN</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
                                             {% for t in teacher %}
-                                            <tr>
-                                                <th>Teacher EmpID</th>
-                                                <th>Teacher Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                            </tr>
-                                            <tr>
-                                                <td>{{t.t_empid}}-{{t.sch_eiin}}</td>
+                                              <tr>
+                                                
+                                                <td>{{t.t_empid}}</td>
                                                 <td>{{t.t_fullname}}</td>
                                                 <td>{{t.t_email}}</td>
-                                                <td>{{t.phone}}</td>
-                                            </tr>
-                                            {% endfor %}                                          
-                                        </table>
+                                                <td>{{t.t_phone}}</td>
+                                                <td>{{t.sch_eiin}}</td>
+                                              </tr>
+                                              {% endfor %}                                                                                        
+                                            </tbody>
+                                          </table>
                                     </div>
                                     <div class="">
                                         {% if messages %}
@@ -161,18 +168,26 @@
                                     </div>
                                 </div>
                                 <div class="actiontab-content" id="stdfb">
-                                    <div class="f-list">
-                                        <table>
-                                            <tr>
-                                                <th>Feedback ID</th>
-                                                <th>Feedback</th>
-                                            </tr>
-                                            <tr>
-                                                <td>f1</td>
-                                                <td>I am Kamal. We need multimedia classroom</td>
-                                            </tr>
-
-                                        </table>
+                                    <div class="f-list">                                       
+                                        <table class="table">
+                                                <thead>
+                                                  <tr>                                                    
+                                                    <th scope="col">Feedback id</th>
+                                                    <th scope="col">Feedback</th>
+                                                    <th scope="col">School</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                        {% for f in feedback %}
+                                                        <tr>                                
+                                                            <td>{{ f.id }}</td>                                       
+                                                            <td>{{ f.feedback }}</td>                                       
+                                                            <td>{{ f.school }}</td>
+                                                        </tr>
+                                                    {% endfor %}                              
+                                                </tbody>
+                                              </table>
+                                        
                                     </div>
                                 </div>
                                 <div class="actiontab-content" id="assco">

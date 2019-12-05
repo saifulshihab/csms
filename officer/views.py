@@ -89,28 +89,33 @@ def school_detail(request, school_eiin):
         headmaster_obj = headmaster_account.objects.filter(
             sch_eiin=school_eiin)
         teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
-        context = {'school': school_obj, 'headmaster': headmaster_obj}
+        feedback = student_feedback.objects.filter(school=school_obj.schoolName)
+        context = {'school': school_obj, 'headmaster': headmaster_obj, 'feedback':feedback}
         if headmaster_obj and teacher_list_obj:
             headmaster_obj = headmaster_account.objects.get(
                 sch_eiin=school_eiin)
-            teacher_list_obj = teacher_account.objects.all()
+            feedback = student_feedback.objects.filter(school=school_obj.schoolName)
+            teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
             context = {'school': school_obj,
-                       'headmaster': headmaster_obj, 'teacher': teacher_list_obj}
+                       'headmaster': headmaster_obj, 'teacher': teacher_list_obj, 'feedback':feedback}
             return render(request, 'school_detail_view.html', context)
         elif headmaster_obj:
             headmaster_obj = headmaster_account.objects.get(
                 sch_eiin=school_eiin)
-            context = {'school': school_obj, 'headmaster': headmaster_obj}
+            feedback = student_feedback.objects.filter(school=school_obj.schoolName)
+            context = {'school': school_obj, 'headmaster': headmaster_obj, 'feedback':feedback}
             messages.success(
                 request, "This school's teacher is not registered yet!")
             return render(request, 'school_detail_view.html', context)
         elif teacher_list_obj:
-            teacher_list_obj = teacher_account.objects.all()
-            context = {'school': school_obj, 'teacher': teacher_list_obj}
+            teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
+            feedback = student_feedback.objects.filter(school=school_obj.schoolName)
+            context = {'school': school_obj, 'teacher': teacher_list_obj, 'feedback':feedback}
             messages.success(request, "This headmaster is not registered yet!")
             return render(request, 'school_detail_view.html', context)
         else:
-            context = {'school': school_obj}
+            feedback = student_feedback.objects.filter(school=school_obj.schoolName)
+            context = {'school': school_obj, 'feedback': feedback}
             messages.success(
                 request, "There are no headmaster/teacher yet registered!")
             return render(request, 'school_detail_view.html', context)

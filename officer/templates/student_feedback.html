@@ -5,8 +5,8 @@
         <div class="col-3">
             <div class="sidebar">
                 <div class="side_menu" class="list-group pt">
-                    <a href="#Welcome" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    <a href="#customer-list" class="list-group-item"><i class="fab fa-rev"></i>Headmaster Pending
+                    <a href="{% url 'dash' %}" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                    <a href="{% url 'hpend' %}" class="list-group-item"><i class="fab fa-rev"></i>Headmaster Pending
                         Request</a>
                     <a href="student_feedback" class="list-group-item"><i class="far fa-comments"></i>Student Feedback</a>
                     <a href="logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
@@ -17,20 +17,24 @@
         <div class="col-9">
             <div class="" id="page_content">
                 <div class="row">
-                    <div class="col">
-                    <table>
-                        <tr>
-                            <th>Feedback ID</th>
-                            <th>Feedback</th>
-                            <th>School</th>
-                        </tr>                                            
-                    {% for f in feedback %}
-                            <tr>
-                               <td>{{ f.id }}</td>
-                               <td>{{ f.feedback }}</td>
-                               <td>{{ f.school }}</td>
-                            </tr>
-                    {% endfor %}
+                    <div class="col">                    
+                    <table class="table">
+                            <thead>
+                              <tr>                                
+                                <th scope="col">Feedback id</th>
+                                <th scope="col">Feedback</th>
+                                <th scope="col">From School</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            {% for f in feedback %}
+                                <tr>                                
+                                    <td>{{ f.id }}</td>                                       
+                                    <td>{{ f.feedback }}</td>                                       
+                                    <td>{{ f.school }}</td>
+                                </tr>
+                            {% endfor %}                             
+                            </tbody>
                     </table>
                 </div>
                 </div>

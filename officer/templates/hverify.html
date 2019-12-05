@@ -6,7 +6,7 @@
             <div class="sidebar">
                 <div class="side_menu" class="list-group pt">
                     <a href="dash" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    <a href="#order" class="list-group-item"><i class="far fa-comments"></i>Student Feedback</a>
+                    <a href="{% url 'student_feedbacks' %}" class="list-group-item"><i class="far fa-comments"></i>Student Feedback</a>
                     <a href="logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                                 <td>{{ head.h_empid }}</td>
                                 <td>{{ head.sch_eiin}}</td>
                                 <td> {{ head.h_phone}}</td>
-                                <td> <button id=45 href="" class="accept btn btn-sm btn-outline-success">Accept</button>
+                                <td> <button id={{head.h_empid}} href="" class="accept btn btn-sm btn-outline-success">Accept</button>
                                     <button class="btn btn-sm btn-outline-danger">Reject</button> </td>
                             </tr>
 
@@ -46,16 +46,20 @@
         </div>
     </div>
 </div>
-
+{% block javascript %}
 <script type="text/javascript">
     $(document).ready(function () {
         var ids = $(this).attr('id');
         $('.accept').click(function () {
             alert(ids);
+            $.ajax({
+                url:''
+            })
         })
-    })
+    })    
 
 </script>
+{% endblock %}
 
 
-{% endblock content %}
+{% endblock %}
