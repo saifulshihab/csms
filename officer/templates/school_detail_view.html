@@ -178,13 +178,17 @@
                                                   </tr>
                                                 </thead>
                                                 <tbody>
-                                                        {% for f in feedback %}
+                                                    
+                                                    {% for f in feedback %}
                                                         <tr>                                
                                                             <td>{{ f.id }}</td>                                       
                                                             <td>{{ f.feedback }}</td>                                       
                                                             <td>{{ f.school }}</td>
                                                         </tr>
-                                                    {% endfor %}                              
+                                                    {% endfor %}
+                                                    {% if not feedback %}
+                                                    <td class="text-danger">No feedback yet!</td>
+                                                    {% endif %}                              
                                                 </tbody>
                                               </table>
                                         
