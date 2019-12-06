@@ -147,11 +147,12 @@ body {
   border-radius: 10px 10px 0 0;
 }
 .school_name a {
-  color: #424242;
+  color: #685b5b;
   text-decoration: none;
 }
 .school_name a:hover {
-  color: #252525;
+  color: black;
+  transition: 0.3s all ease;
 }
 .school_wrap {
   padding: 15px;
@@ -229,4 +230,20 @@ body {
   background: white;
   border-radius: 5px;
   padding: 10px;
+}
+.allteacher .table, .teacher_verify .table, .head_verify .table{
+  text-align:center;
+  border: 1px solid #ddd;
+}
+.h_sidebar{
+background: #240018;
+}
+.h_sidebar a{
+color: #a4039a;
+}
+.t_sidebar{
+background: #0b0b0be6;
+}
+.t_sidebar a{
+color: #579f57;
 }
