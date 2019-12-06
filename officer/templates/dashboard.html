@@ -1,65 +1,45 @@
-{% extends 'base.html' %}
+{% extends 'o_base.html' %}
 {% block content %}
-<div id="officer_dashboard">
-    <div class="row">
-        <div class="col-3">
-            <div class="sidebar">
-                <div class="side_menu" class="list-group pt">
-                    <a href="dash" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    <a href="hpend" class="list-group-item"><i class="fab fa-rev"></i>Headmaster Pending
-                        Request</a>
-                    <a href="student_feedbacks" class="list-group-item"><i class="far fa-comments"></i>Student Feedback</a>
-                    <a href="{% url 'logout' %}" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
-                </div>
+<div class="row">
+    {% for sch in school %}
+    <div class="col-4 mb-4">
+        <div class="school">
+            <div class="school_name">
+                <a href="{{ sch.get_absolute_url }}">
+                    <h5 class="font-weight-bold">{{ sch.schoolName }}</h5>
+                </a>
             </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="col-9">
-            <div class="" id="page_content">
-                <div class="row">
-                    {% for sch in school %}
-                    <div class="col-4 mb-4">
-                        <div class="school">
-                            <div class="school_name">
-                                <a href="{{ sch.get_absolute_url }}">
-                                    <h5 class="font-weight-bold">{{ sch.schoolName }}</h5>
-                                </a>
-                            </div>
-                            <div class="school_info">
-                                <div class="info">
-                                    <div class="number float-left">
-                                        <h1 style="color: #1ca849;">{{ sch.totalStudent }}</h1>
-                                    </div>
-                                    <div class="text">
-                                        <p>Total number of student</p>
-                                    </div>
-                                </div>
-                                <div class="info">
-                                    <div class="number float-left">
-                                        <h1 style="color: #b505b5;">{{sch.attendance_percentage}}%</h1>
-                                    </div>
-                                    <div class="text">
-                                        <p>Attendance</p>
-                                        <p class="attntxt">Last 30 days</p>
-                                    </div>
-                                </div>
-                                <div class="info">
-                                    <div class="number float-left">
-                                        <h1 style="color: #ff7a00;">{{sch.pass_percentage}}%</h1>
-                                    </div>
-                                    <div class="text">
-                                        <p>Passed</p>
-                                        <p class="restxt">Half yearly exam 2019</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="school_info">
+                <div class="info">
+                    <div class="number float-left">
+                        <h1 style="color: #1ca849;">{{ sch.totalStudent }}</h1>
                     </div>
-                    <div class=""></div>
-                    {% endfor %}
+                    <div class="text">
+                        <p>Total number of student</p>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="number float-left">
+                        <h1 style="color: #b505b5;">{{sch.attendance_percentage}}%</h1>
+                    </div>
+                    <div class="text">
+                        <p>Attendance</p>
+                        <p class="attntxt">Last 30 days</p>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="number float-left">
+                        <h1 style="color: #ff7a00;">{{sch.pass_percentage}}%</h1>
+                    </div>
+                    <div class="text">
+                        <p>Passed</p>
+                        <p class="restxt">Half yearly exam 2019</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-{% endblock content %}
+    <div class=""></div>
+    {% endfor %}
+</div>       
+{% endblock content %}    

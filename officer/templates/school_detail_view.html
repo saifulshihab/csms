@@ -1,222 +1,192 @@
-{% extends 'base.html' %}
-{% block content %}
-<div id="officer_dashboard">
-    <div class="row">
-        <div class="col-3">
-            <div class="sidebar">
-                <div class="side_menu" class="list-group pt">
-                    <a href="dash" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    <a href="hpend" class="list-group-item"><i class="fab fa-rev"></i>Headmaster Pending
-                        Request</a>
-                    <a href="#order" class="list-group-item"><i class="far fa-comments"></i>Student Feedback</a>
-                    <a href="logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+{% extends 'o_base.html' %}
+{% block content %}                                 
+    <div class="school_wrap">
+        <div class="school_name mb-5">
+            <h1 style="font-weight:bold">{{school.schoolName}}</h1>
+            <div style="padding: 1px;background:#4b484b"></div>
+            <h2>School EIIN: {{school.SchoolEIIN}}</h2>
+        </div>
+        <div class="total_student">
+            <div class="row">
+                <div class="col">
+                    <h3 class="float-left">Total Number Of Student</h3>
+                    <span class="float-right">
+                        <h3 style="color: #1ca849;font-weight:bold">{{school.totalStudent}}</h3>
+                    </span>
                 </div>
             </div>
         </div>
-        <div class="clearfix"></div>
-        <div class="col-9">
-            <div class="" id="page_content">
-                <div class="page-content">
-                    <div class="container">
-                        <div class="school_wrap">
-                            <div class="school_name mb-5">
-                                <h1 style="font-weight:bold">{{school.schoolName}}</h1>
-                                <div style="padding: 1px;background:#4b484b"></div>
-                                <h2>School EIIN: {{school.SchoolEIIN}}</h2>
-                            </div>
-                            <div class="total_student">
-                                <div class="row">
-                                    <div class="col">
-                                        <h3 class="float-left">Total Number Of Student</h3>
-                                        <span class="float-right">
-                                            <h3 style="color: #1ca849;font-weight:bold">{{school.totalStudent}}</h3>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="total_teacher">
-                                <div class="row">
-                                    <div class="col">
-                                        <h3 class="float-left">Total Teacher</h3>
-                                        <span class="float-right">
-                                            <h3 style="color: #db0080;font-weight:bold">{{school.totalTeacher}}</h3>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="text-secondary">Male Teacher 12</p>
-                                        <p class="text-secondary">Female Teacher 4</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="attendance">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="attdays float-left">
-                                            <h3 class="">Attendance</h3>
-                                            <p class="text-secondary">Last 30 days</p>
-                                        </div>
-                                        <span class="float-right">
-                                            <h3 style="color: #b505b5;font-weight:bold">
-                                                {{school.attendance_percentage}}%</h3>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="attendance">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="attdays float-left">
-                                            <h3 class="">Passed</h3>
-                                            <p class="text-secondary">Final Exam 2019</p>
-                                        </div>
-                                        <span class="float-right">
-                                            <h3 style="color: #c2951a;font-weight:bold">
-                                                {{school.pass_percentage}}%</h3>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="actiontab mt-4">
-                            <div class="actiontab-nav">
-                                <div class="row">
-                                    <div class="col-3 navbtnwrap">
-                                        <div class="navbtn">
-                                            <input type='radio' value='1' name='radio' id='radio1' />
-                                            <label for='radio1'>Headmaster</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 navbtnwrap">
-                                        <div class="navbtn">
-                                            <input type='radio' value='1' name='radio' id='radio2' />
-                                            <label for='radio2'>All Teacher</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 navbtnwrap">
-                                        <div class="navbtn">
-                                            <input type='radio' value='1' name='radio' id='radio3' />
-                                            <label for='radio3'>Student Feedback</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 navbtnwrap">
-                                        <div class="navbtn">
-                                            <input type='radio' value='1' name='radio' id='radio4' />
-                                            <label for='radio4'>Assign Coordinator</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="actiontab-body">
-                                <div class="actiontab-content" id="headmaster">
-                                    <div class="row mt-2">
-                                        <div class="col-3">
-                                            <h5>Headmaster Name:</h5>
-                                            <h5>Employee ID:</h5>
-                                            <h5>Email Address:</h5>
-                                            <h5>Phone Number:</h5>
-                                            <button class="btn btn-sm btn-outline-success">Contact</button>
-                                        </div>
-                                        <div class="col-3">
-                                            <h5>{{headmaster.h_fullname}}</h5>
-                                            <h5>{{ headmaster.h_empid}}</h5>
-                                            <h5>{{headmaster.h_email}}</h5>
-                                            <h5>{{headmaster.h_phone}}</h5>
-                                        </div>
-                                        <div class="col-6">
-                                            {% if messages %}
-                                            {% for msg in messages %}
-                                            <p class="mt-5 text-danger">{{msg}}</p>
-                                            {% endfor %}
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="actiontab-content" id="allteacher">
-                                    <div class="t-list p-3">                                      
-                                        <table class="table">
-                                            <thead>
-                                              <tr>
-                                                <th scope="col">Teacher EmpID</th>
-                                                <th scope="col">Teacher Name</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Phone</th>
-                                                <th scope="col">EIIN</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for t in teacher %}
-                                              <tr>
-                                                
-                                                <td>{{t.t_empid}}</td>
-                                                <td>{{t.t_fullname}}</td>
-                                                <td>{{t.t_email}}</td>
-                                                <td>{{t.t_phone}}</td>
-                                                <td>{{t.sch_eiin}}</td>
-                                              </tr>
-                                              {% endfor %}                                                                                        
-                                            </tbody>
-                                          </table>
-                                    </div>
-                                    <div class="">
-                                        {% if messages %}
-                                        {% for msg in messages %}
-                                        <p class="mt-5 text-danger">{{msg}}</p>
-                                        {% endfor %}
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <div class="actiontab-content" id="stdfb">
-                                    <div class="f-list">                                       
-                                        <table class="table">
-                                                <thead>
-                                                  <tr>                                                    
-                                                    <th scope="col">Feedback id</th>
-                                                    <th scope="col">Feedback</th>
-                                                    <th scope="col">School</th>
-                                                  </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                    {% for f in feedback %}
-                                                        <tr>                                
-                                                            <td>{{ f.id }}</td>                                       
-                                                            <td>{{ f.feedback }}</td>                                       
-                                                            <td>{{ f.school }}</td>
-                                                        </tr>
-                                                    {% endfor %}
-                                                    {% if not feedback %}
-                                                    <td class="text-danger">No feedback yet!</td>
-                                                    {% endif %}                              
-                                                </tbody>
-                                              </table>
-                                        
-                                    </div>
-                                </div>
-                                <div class="actiontab-content" id="assco">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="">Select Co-ordinator</label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">Saiful islam</option>
-                                                <option value="">Saimon Hotel</option>
-                                                <option value="">Joy Roy</option>
-                                                <option value="">Saiful islam</option>
-                                                <option value="">Not Needed</option>
-                                            </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-sm btn-primary">Assign</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+        <div class="total_teacher">
+            <div class="row">
+                <div class="col">
+                    <h3 class="float-left">Total Teacher</h3>
+                    <span class="float-right">
+                        <h3 style="color: #db0080;font-weight:bold">{{school.totalTeacher}}</h3>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="text-secondary">Male Teacher 12</p>
+                    <p class="text-secondary">Female Teacher 4</p>
+                </div>
+            </div>
+        </div>
+        <div class="attendance">
+            <div class="row">
+                <div class="col">
+                    <div class="attdays float-left">
+                        <h3 class="">Attendance</h3>
+                        <p class="text-secondary">Last 30 days</p>
                     </div>
+                    <span class="float-right">
+                        <h3 style="color: #b505b5;font-weight:bold">
+                            {{school.attendance_percentage}}%</h3>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="attendance">
+            <div class="row">
+                <div class="col">
+                    <div class="attdays float-left">
+                        <h3 class="">Passed</h3>
+                        <p class="text-secondary">Final Exam 2019</p>
+                    </div>
+                    <span class="float-right">
+                        <h3 style="color: #c2951a;font-weight:bold">
+                            {{school.pass_percentage}}%</h3>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="actiontab mt-4">
+        <div class="actiontab-nav">
+            <div class="row">
+                <div class="col-3 navbtnwrap">
+                    <div class="navbtn">
+                        <input type='radio' value='1' name='radio' id='radio1' />
+                        <label for='radio1'>Headmaster</label>
+                    </div>
+                </div>
+                <div class="col-3 navbtnwrap">
+                    <div class="navbtn">
+                        <input type='radio' value='1' name='radio' id='radio2' />
+                        <label for='radio2'>All Teacher</label>
+                    </div>
+                </div>
+                <div class="col-3 navbtnwrap">
+                    <div class="navbtn">
+                        <input type='radio' value='1' name='radio' id='radio3' />
+                        <label for='radio3'>Student Feedback</label>
+                    </div>
+                </div>
+                <div class="col-3 navbtnwrap">
+                    <div class="navbtn">
+                        <input type='radio' value='1' name='radio' id='radio4' />
+                        <label for='radio4'>Assign Coordinator</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="actiontab-body">
+            <div class="actiontab-content" id="headmaster">
+                <div class="row mt-2">
+                    <div class="col-3">
+                        <h5>Headmaster Name:</h5>
+                        <h5>Employee ID:</h5>
+                        <h5>Email Address:</h5>
+                        <h5>Phone Number:</h5>
+                        <button class="btn btn-sm btn-outline-success">Contact</button>
+                    </div>
+                    <div class="col-3">
+                        <h5>{{headmaster.h_fullname}}</h5>
+                        <h5>{{ headmaster.h_empid}}</h5>
+                        <h5>{{headmaster.h_email}}</h5>
+                        <h5>{{headmaster.h_phone}}</h5>
+                    </div>
+                    
+                        {% if not headmaster %} 
+                        <p class="text-danger">This school's headmaster is not registered yet!</p>
+                        {% endif %}                                                                                       
+                    
+                </div>
+            </div>
+            <div class="actiontab-content" id="allteacher">
+                <div class="t-list p-3">                                      
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Teacher EmpID</th>
+                            <th scope="col">Teacher Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">EIIN</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for t in teacher %}
+                          <tr>
+                            
+                            <td>{{t.t_empid}}</td>
+                            <td>{{t.t_fullname}}</td>
+                            <td>{{t.t_email}}</td>
+                            <td>{{t.t_phone}}</td>
+                            <td>{{t.sch_eiin}}</td>
+                          </tr>
+                          {% endfor %}
+                          {% if not teacher %} 
+                          <td class="text-danger">This school's teacher is not registered yet!</td>
+                          {% endif %}                                                                                       
+                        </tbody>
+                      </table>
+                </div>                                    
+            </div>
+            <div class="actiontab-content" id="stdfb">
+                <div class="f-list">                                       
+                    <table class="table">
+                            <thead>
+                              <tr>                                                    
+                                <th scope="col">Feedback id</th>
+                                <th scope="col">Feedback</th>
+                                <th scope="col">School</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                
+                                {% for f in feedback %}
+                                    <tr>                                
+                                        <td>{{ f.id }}</td>                                       
+                                        <td>{{ f.feedback }}</td>                                       
+                                        <td>{{ f.school }}</td>
+                                    </tr>
+                                {% endfor %}
+                                {% if not feedback %}
+                                <td class="text-danger">No feedback yet!</td>
+                                {% endif %}                              
+                            </tbody>
+                          </table>
+                    
+                </div>
+            </div>
+            <div class="actiontab-content" id="assco">
+                <form>
+                    <div class="form-group">
+                        <label for="">Select Co-ordinator</label>
+                        <select name="" id="" class="form-control">
+                            <option value="">Saiful islam</option>
+                            <option value="">Saimon Hotel</option>
+                            <option value="">Joy Roy</option>
+                            <option value="">Saiful islam</option>
+                            <option value="">Not Needed</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-primary">Assign</button>
+                </form>
+            </div>
+        </div>
+    </div>                                    
 <script type="text/javascript">
     $(document).ready(function () {
         $("#headmaster").hide();

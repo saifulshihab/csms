@@ -2,8 +2,9 @@
 {% block content %}
 <div class="container">
     <div class="officer-registration-form">
-        <h4 class="mb-3 d-inline-block">Officer Registration</h4><span
+        <h4 class="mb-3 d-inline-block">Officer Registration</h4><span        
             class="mt-1 float-right badge badge-info">CSMS</span>
+            <div class="bg-info mb-3" style="padding: 0.5px;"></div>
         <form action="officerReg" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
