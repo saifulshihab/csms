@@ -3,6 +3,7 @@
 <div class="container">
     <div class="offloginform mt-3">
         <h4 class="d-inline-block">Officer Login</h4><span class="mt-1 float-right badge badge-info">CSMS</span>
+        <div class="bg-info mb-3" style="padding: 0.5px;"></div>
         <form action="offcierLogin" method="POST" enctype="multipart/form-data" class="mt-2">
             {% csrf_token %}
             <div class="form-group">
@@ -18,7 +19,7 @@
             {% if messages %}
             <ul class="messages text-center">
                 {% for msg in messages %}
-                <div class="oreg_alert alert alert-primary">{{ msg }}</div>
+                <div class="oreg_alert alert alert-danger">{{ msg }}</div>
                 {% endfor %}
             </ul>
             {% endif %}

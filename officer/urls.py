@@ -7,10 +7,14 @@ urlpatterns = [
     path('backlogin', views.backlogin, name="backlogin"),
     path('officerReg', views.officerReg, name="officerReg"),
     path('offcierLogin', views.offcierLogin, name="offcierLogin"),
-    path('logout', views.logout, name="logout"),
+    path('logout', views.logout, name="logouts"),
     path('school_detail/<str:school_eiin>/',
          views.school_detail, name="school_detail"),
-    path('student_feedbacks', views.student_feedbacks, name="student_feedbacks"),
+    path('student_feedback', views.student_feedbacks, name="student_feedbacks"),
     path('dash', views.dash, name="dash"),
-    path('hpend', views.hpend, name="hpend")
+    path('hpend', views.hpend, name="hpends"),
+    path('reject_head/<str:h_empid>/', views.reject_head, name="reject_head"),
+    path('head_approve/<str:h_empid>/', views.head_approve, name="head_approve"),
+    path('allheadmaster', views.allheadmasters, name="allheadmasters"),
+    path('registered_schools', views.registered_schools, name="registered_schools")
 ]

@@ -8,27 +8,23 @@
                 <th scope="col">Headmaster Email</th>
                 <th scope="col">Employee ID</th>
                 <th scope="col">School EIIN</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Action</th>
+                <th scope="col">Phone</th>               
             </tr>
         </thead>
         <tbody>
-            {% for head in hv %}
+            {% for head in headmasters %}
             <tr>
                 <td>{{ head.h_fullname }}</td>
                 <td>{{ head.h_email}}</td>
                 <td>{{ head.h_empid }}</td>
                 <td>{{ head.sch_eiin}}</td>
-                <td> {{ head.h_phone}}</td>
-                <td> <a class="btn btn-sm btn-outline-success" href="{{ head.approve_head }}">Accept</a>
-                    <a class="btn btn-sm btn-outline-danger" href="{{ head.get_absolute_url }}">Reject</a>
-                </td>
+                <td> {{ head.h_phone}}</td>                
             </tr>
             {% endfor %}            
         </tbody>
     </table>
-    {% if not hv %}
-            <span class="text-danger">No headmaster pending registration!</span>
+    {% if not headmasters %}
+            <span class="text-danger">No headmaster Registered!</span>
             {% endif %}
 </div>    
 {% endblock %}

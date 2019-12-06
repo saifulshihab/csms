@@ -103,21 +103,16 @@ def school_detail(request, school_eiin):
             headmaster_obj = headmaster_account.objects.get(
                 sch_eiin=school_eiin)
             feedback = student_feedback.objects.filter(school=school_obj.schoolName)
-            context = {'school': school_obj, 'headmaster': headmaster_obj, 'feedback':feedback}
-            messages.success(
-                request, "This school's teacher is not registered yet!")
+            context = {'school': school_obj, 'headmaster': headmaster_obj, 'feedback':feedback}            
             return render(request, 'school_detail_view.html', context)
         elif teacher_list_obj:
             teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
             feedback = student_feedback.objects.filter(school=school_obj.schoolName)
-            context = {'school': school_obj, 'teacher': teacher_list_obj, 'feedback':feedback}
-            messages.success(request, "This headmaster is not registered yet!")
+            context = {'school': school_obj, 'teacher': teacher_list_obj, 'feedback':feedback}            
             return render(request, 'school_detail_view.html', context)
         else:
             feedback = student_feedback.objects.filter(school=school_obj.schoolName)
-            context = {'school': school_obj, 'feedback': feedback}
-            messages.success(
-                request, "There are no headmaster/teacher yet registered!")
+            context = {'school': school_obj, 'feedback': feedback}            
             return render(request, 'school_detail_view.html', context)
     except schoolInfo.DoesNotExist:
         raise Http404
@@ -137,3 +132,26 @@ def student_feedbacks(request):
     if request.session.has_key('empid'):
         obj = student_feedback.objects.all()
         return render(request, 'student_feedback.html', {'feedback': obj})
+
+def reject_head(request, h_empid):
+    print(h_empid)
+    headmaster_verify.objects.filter(h_empid=h_empid).delete()
+    hv = headmaster_verify.objects.all()
+    return render(request, 'hverify.html', {'hv': hv})
+
+def head_approve(request, h_empid):
+    ch = headmaster_verify.objects.get(h_empid=h_empid)
+    head_account_create = headmaster_account(
+                            h_fullname=ch.h_fullname, h_email=ch.h_email, h_empid=ch.h_empid, h_pass=ch.h_pass, h_phone=ch.h_phone, sch_eiin=ch.sch_eiin)
+    head_account_create.save()
+    headmaster_verify.objects.filter(h_empid=h_empid).delete()
+    hv = headmaster_verify.objects.all()
+    return render(request, 'hverify.html', {'hv': hv})                                
+
+def allheadmasters(request):
+    obj = headmaster_account.objects.all()
+    return render(request, 'allheadmaster.html', {'headmasters': obj})
+
+def registered_schools(request):
+    obj = schoolInfo.objects.all()
+    return render(request, 'registered_schools.html', {'schools': obj})
