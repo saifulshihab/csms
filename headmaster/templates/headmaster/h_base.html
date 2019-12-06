@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Centralized School Monitoring System</title>
+    <title>Headmaster Dashboard | CSMS</title>
     <link rel="icon" href="{% static 'images/logo.png'%}" type="image/gif" sizes="16x16">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
@@ -19,7 +19,7 @@
 <body>
     <div id="officer_dashboard">
         <nav class="navbar navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="home"><i style="margin-right:15px" class="fas fa-school"></i>Centralized
+            <a class="navbar-brand" href="{% url 'home' %}"><i style="margin-right:15px" class="fas fa-school"></i>Centralized
                 School
                 Monitoring System</a>
             <div class="right_link justify-content-end">
@@ -33,19 +33,19 @@
         </nav>
         <div class="row" style="margin-top: 56px;">
             <div class="col-3">
-                <div class="sidebar">
+                <div class="sidebar h_sidebar">
                     <div class="side_menu" class="list-group pt">
-                        <a href="" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <a href="./" class="list-group-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        <a href="{% url 'allteachers' %}" class="list-group-item"><i class="fas fa-users"></i>Teachers</a>
                         <a href="teacherverification" class="list-group-item"><i class="fab fa-rev"></i>Teacher Pending
-                            Request</a>
-                        <a href="#order" class="list-group-item"><i class="far fa-plus-square"></i>Assign Teacher</a>
-                        <a href="#order" class="list-group-item"><i class="far fa-user-circle"></i>My Account</a>
+                            Registration</a>
+                        <a href="" class="list-group-item"><i class="far fa-plus-square"></i>Assign Teacher</a>
+                        <a href="" class="list-group-item"><i class="far fa-user-circle"></i>My Account</a>
                         <a href="head_logout" class="list-group-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
                     </div>
                 </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-9">
+            </div>            
+            <div class="col-9" style="margin-left:-20px">
                 <div class="" id="page_content">
                     {% block content %}
                     {% endblock %}
