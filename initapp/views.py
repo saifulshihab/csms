@@ -32,11 +32,11 @@ def userregistration(request):
             check_eiin = schoolInfo.objects.filter(
                 SchoolEIIN=request.POST['user_eiin'])
             if check_eiin:
-                check_headeid = headmaster_verify.objects.filter(
-                    h_empid=request.POST['userempid'])
-                if(check_headeid):
+                check_multi_head = headmaster_verify.objects.filter(
+                    sch_eiin=request.POST['user_eiin'])
+                if check_multi_head:
                     messages.success(
-                        request, 'This employee id is already taken! Try again..')
+                        request, 'Headmaster already registered!')
                     return render(request, 'usersignup.html')
                 else:
                     if request.POST['userpass'] == request.POST['usercpass']:
@@ -44,7 +44,7 @@ def userregistration(request):
                             h_fullname=request.POST['userfullname'], h_email=request.POST['useremail'], h_empid=request.POST['userempid'], h_pass=request.POST['userpass'], h_phone=request.POST['userphone'], sch_eiin=request.POST['user_eiin'])
                         head_account_create.save()
                         messages.success(
-                            request, "This Headmaster account created successfully and wait for confirmation!")
+                            request, "Headmaster account created successfully. Wait for verification!")
                         return render(request, 'usersignup.html')
                     else:
                         messages.success(request, "Password doesn't match!")
@@ -69,14 +69,14 @@ def userregistration(request):
                             t_fullname=request.POST['userfullname'], t_email=request.POST['useremail'], t_empid=request.POST['userempid'], t_pass=request.POST['userpass'], t_phone=request.POST['userphone'], sch_eiin=request.POST['user_eiin'])
                         teach_account_verify_create.save()
                         messages.success(
-                            request, "Teacher account created successfully and wait for confirmation!")
+                            request, "Teacher account created successfully. Wait for verification!")
                         return render(request, 'usersignup.html')
                     else:
                         messages.success(request, "Password doesn't match!")
                         return render(request, 'usersignup.html')
             else:
                 messages.success(
-                    request, "This school info isn't registered yet in system! Try back later. ..")
+                    request, "This school isn't registered yet in the system! Try back later. ..")
                 return render(request, 'usersignup.html')
         else:
             student_roll = request.POST['student_roll']
@@ -141,6 +141,7 @@ def userlogin(request):
             stdlogin = student_account.objects.filter(
                 s_roll=std_roll, s_pass=std_pass, s_school=std_sch, s_class=std_cls)
             if stdlogin:
+                # request.session['teacher_eid'] = userempid
                 return redirect('student/loginsuccess/')
             else:
                 messages.success(
