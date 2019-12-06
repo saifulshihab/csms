@@ -9,7 +9,7 @@ def dashboard(request):
     else:
         return redirect('userlogin')
 
-def teacher_logout(request):
+def teach_logout(request):
     try:
         del request.session['teacher_eid']
     except KeyError:
