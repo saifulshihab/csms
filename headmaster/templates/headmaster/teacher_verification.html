@@ -1,10 +1,7 @@
 {% extends 'headmaster/h_base.html' %}
 {% block content %}
-<div class="row">
-    <div class="col-9">
-            <div class="" id="page_content">
-                <div class="row">
-                    <table class="table">
+                <div class="row teacher_verify">
+                    <table class="table" style="text-align: center;">
                           <thead>
                             <tr>
                               <th scope="col">Teacher Name</th>
@@ -23,15 +20,19 @@
                                 <td>{{ teacher.t_email}}</td>
                               <td>{{ teacher.t_empid }}</td>
                               <td>{{ teacher.sch_eiin}}</td>
-                                <td> {{ teacher.t_phone}}</td>
-                                <td> <button href="" class="btn btn-sm btn-outline-success" >Accept</button>  <button class="btn btn-sm btn-outline-danger">Reject</button> </td>
+                                <td> {{ teacher.t_phone }}</td>
+                                <td>
+                                <a href="{{ teacher.approve_teacher }}" class="btn btn-sm btn-outline-success">Accept</a>
+                                <a href="{{ teacher.reject_teacher }}" class="btn btn-sm btn-outline-danger">Reject</a>
+                                </td>
                             </tr>
-
-                             {% endfor %}
+                             {% endfor %}                             
                           </tbody>
                     </table>
-            </div>
-            </div>
-        </div>
-</div>
+                    {% if not tv %}
+                    <div class="justify-content-center d-block">
+                    <span class="text-danger">No teacher pending registration!</span>
+                  </div>
+                    {% endif %}
+            </div>           
 {% endblock %}
