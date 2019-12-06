@@ -27,8 +27,11 @@ class headmaster_verify(models.Model):
     def __str__(self):
         return self.h_empid
 
-    def get_absolutee_url(self):
+    def approve_head(self):
         return f"/head_approve/{self.h_empid}/"
+
+    def get_absolute_url(self):
+        return f"/reject_head/{self.h_empid}/"
 
 
 class teacher_account(models.Model):
@@ -63,3 +66,9 @@ class teacher_verify(models.Model):
 
     def __str__(self):
         return self.t_fullname
+
+    def approve_teacher(self):
+        return f"./teacher_approve/{self.t_empid}/"
+
+    def reject_teacher(self):
+        return f"./teacher_reject/{self.t_empid}/"
