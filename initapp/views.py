@@ -27,14 +27,16 @@ def userbacklogin(request):
 
 def userregistration(request):
     if request.method == 'POST':
-        user_select = request.POST['selecteduser']       
+        user_select = request.POST['selecteduser']
         if user_select == "headmaster":
             check_eiin = schoolInfo.objects.filter(
                 SchoolEIIN=request.POST['user_eiin'])
             if check_eiin:
                 check_multi_head = headmaster_verify.objects.filter(
                     sch_eiin=request.POST['user_eiin'])
-                if check_multi_head:
+                check_multi_head2 = headmaster_account.objects.filter(
+                    sch_eiin=request.POST['user_eiin'])
+                if check_multi_head or check_multi_head2:
                     messages.success(
                         request, 'Headmaster already registered!')
                     return render(request, 'usersignup.html')
