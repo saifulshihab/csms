@@ -15,7 +15,7 @@ def send_feedback(request):
             feedback_form = feedbackForm()
         else:
             print(feedback_form.errors)
-    context = {'form':feedback_form}
+    context = {'form': feedback_form}
     return render(request, 'student_dashboard.html', context)
 
 def slogout(request):
