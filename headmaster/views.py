@@ -30,24 +30,28 @@ def about(request):
 
 
 def teacherverification(request):
-    s_eiin = headmaster_account.objects.get(h_empid = request.session.get('headmaster_eid'))
+    s_eiin = headmaster_account.objects.get(h_empid=request.session.get('headmaster_eid'))
     check_ein = s_eiin.sch_eiin
-    tv = teacher_verify.objects.filter(sch_eiin=check_ein)    
+    tv = teacher_verify.objects.filter(sch_eiin=check_ein)
     return render(request, 'headmaster/teacher_verification.html', {'tv': tv})
 
-def teacher_reject(request, t_empid):    
+
+def teacher_reject(request, t_empid):
     teacher_verify.objects.filter(t_empid=t_empid).delete()
     return teacherverification(request)
+
 
 def teacher_approve(request, t_empid):
     ch = teacher_verify.objects.get(t_empid=t_empid)
     teach_account_create = teacher_account(
-                            t_fullname=ch.t_fullname, t_email=ch.t_email, t_empid=ch.t_empid, t_pass=ch.t_pass, t_phone=ch.t_phone, sch_eiin=ch.sch_eiin)
+        t_fullname=ch.t_fullname, t_email=ch.t_email, t_empid=ch.t_empid, t_pass=ch.t_pass, t_phone=ch.t_phone,
+        sch_eiin=ch.sch_eiin)
     teach_account_create.save()
     teacher_verify.objects.filter(t_empid=t_empid).delete()
     return teacherverification(request)
 
+
 def allteachers(request):
-    he = headmaster_account.objects.get(h_empid = request.session.get('headmaster_eid'))
-    t_list = teacher_account.objects.filter(sch_eiin = he.sch_eiin)
-    return render(request, 'headmaster/allteacher.html', {'teacher':t_list})
+    he = headmaster_account.objects.get(h_empid=request.session.get('headmaster_eid'))
+    t_list = teacher_account.objects.filter(sch_eiin=he.sch_eiin)
+    return render(request, 'headmaster/allteacher.html', {'teacher': t_list})
