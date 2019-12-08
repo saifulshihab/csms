@@ -1,4 +1,5 @@
 from django.db import models
+from school.models import schoolInfo
 
 
 # Create your models here.
@@ -47,10 +48,24 @@ class teacher_account(models.Model):
 
 
 class student_account(models.Model):
+    school_class = [
+        ('One', 'One'),
+        ('Two', 'Two'),
+        ('Three', 'Three'),
+        ('Four', 'Four'),
+        ('Five', 'Five'),
+        ('Six', 'Six'),
+        ('Seven', 'Seven'),
+        ('Eight', 'Eight'),
+        ('Nine', 'Nine'),
+        ('Ten', 'Ten')
+
+    ]
     s_roll = models.CharField(max_length=50, blank=False, null=False)
     s_pass = models.CharField(max_length=50, blank=False, null=False)
-    s_class = models.CharField(max_length=10, blank=False, null=False)
+    s_class = models.CharField(max_length=10, blank=False, null=False, choices=school_class)
     s_school = models.CharField(max_length=200, blank=False, null=False)
+    SchoolEIIN = models.CharField(max_length=25, blank=False, null=False, default=None)
 
     def __str__(self):
         return self.s_school
