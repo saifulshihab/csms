@@ -1,5 +1,8 @@
 {% extends 'o_base.html' %}
 {% block content %}
+<div>
+    <h3 class="font-weight-bold mb-4">All Headmaster</h3>
+</div>
 <div class="row head_verify">
     <table class="table">
         <thead>
@@ -8,7 +11,7 @@
                 <th scope="col">Headmaster Email</th>
                 <th scope="col">Employee ID</th>
                 <th scope="col">School EIIN</th>
-                <th scope="col">Phone</th>               
+                <th scope="col">Phone</th>
             </tr>
         </thead>
         <tbody>
@@ -18,13 +21,13 @@
                 <td>{{ head.h_email}}</td>
                 <td>{{ head.h_empid }}</td>
                 <td>{{ head.sch_eiin}}</td>
-                <td> {{ head.h_phone}}</td>                
+                <td> {{ head.h_phone}}</td>
             </tr>
-            {% endfor %}            
+            {% endfor %}
         </tbody>
     </table>
     {% if not headmasters %}
-            <span class="text-danger">No headmaster Registered!</span>
-            {% endif %}
-</div>    
+    <span class="text-danger">No headmaster Registered!</span>
+    {% endif %}
+</div>
 {% endblock %}

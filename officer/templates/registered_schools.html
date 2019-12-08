@@ -1,24 +1,28 @@
 {% extends 'o_base.html' %}
 {% block content %}
+<div>
+    <h3 class="font-weight-bold mb-4 d-inline-block">Registered School</h3>
+</div>
+
 <div class="row head_verify">
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">EIIN</th>
-                <th scope="col">School Name</th>                           
+                <th scope="col">School Name</th>
             </tr>
         </thead>
         <tbody>
             {% for sch in schools %}
             <tr>
                 <td>{{ sch.SchoolEIIN }}</td>
-                <td>{{ sch.schoolName }}</td>                           
+                <td>{{ sch.schoolName }}</td>
             </tr>
-            {% endfor %}            
+            {% endfor %}
         </tbody>
     </table>
     {% if not schools %}
-            <span class="text-danger">No Schools Registered!</span>
-            {% endif %}
-</div>    
+    <span class="text-danger">No Schools Registered!</span>
+    {% endif %}
+</div>
 {% endblock %}

@@ -1,5 +1,8 @@
 {% extends 'o_base.html' %}
 {% block content %}
+<div>
+    <h3 class="font-weight-bold mb-4">Headmaster Pending Registration</h3>
+</div>
 <div class="row head_verify">
     <table class="table">
         <thead>
@@ -24,11 +27,11 @@
                     <a class="btn btn-sm btn-outline-danger" href="{{ head.get_absolute_url }}">Reject</a>
                 </td>
             </tr>
-            {% endfor %}            
+            {% endfor %}
         </tbody>
     </table>
     {% if not hv %}
-            <span class="text-danger">No headmaster pending registration!</span>
-            {% endif %}
-</div>    
+    <span class="text-danger">No headmaster pending registration!</span>
+    {% endif %}
+</div>
 {% endblock %}
