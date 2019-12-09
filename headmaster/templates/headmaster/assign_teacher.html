@@ -16,8 +16,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              {% for teacher in teacher %}
-                        
+                              {% for teacher in teacher %}                        
                               <tr>
                                 <td>{{ teacher.t_empid }}</td>
                                 <td>{{ teacher.classes}}</td>
@@ -27,9 +26,12 @@
                                   </a>
                                 </td>
                               </tr>
-                              {% endfor %}
+                              {% endfor %}                              
                             </tbody>
                           </table>
+                          {% if not teacher %}
+                              <p class="text-danger">No teacher assigned!</p>
+                              {% endif %}
             </div>
         </div>
         <div class="col-3">            

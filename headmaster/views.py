@@ -93,4 +93,5 @@ def delete_teacher(request, id):
         h_empid=request.session.get('headmaster_eid'))
     obj = assign_teacher.objects.filter(sch_eiin = he.sch_eiin)    
     context = {'teacher': obj}
+    return assign_teacherr(request)     
     return render(request, 'headmaster/assign_teacher.html', context)
