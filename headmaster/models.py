@@ -20,3 +20,4 @@ class assign_teacher(models.Model):
         return self.sch_eiin
     def delete_teacher(self):
         return f"./delete_teacher/{self.id}/"
+

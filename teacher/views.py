@@ -3,14 +3,15 @@ from .models import teacher
 from initapp.models import student_account,teacher_account
 from school.models import schoolInfo
 from .forms import addstudentform
-
+from headmaster.models import assign_teacher
 
 # Create your views here.
 
 
 def dashboard(request):
-    if request.session.has_key('teacher_eid'):
-        return render(request, 'teacher/dashboard.html')
+    if request.session.has_key('teacher_eid'):        
+        getclass = assign_teacher.objects.filter(t_empid=request.session.get('teacher_eid'))
+        return render(request, 'teacher/dashboard.html', {'clas': getclass})
     else:
         return redirect('userlogin')
 

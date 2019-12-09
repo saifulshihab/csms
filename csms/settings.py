@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'student.apps.StudentConfig',
     'headmaster',
     'school',
+    'allclass',
     'crispy_forms'
 ]
 

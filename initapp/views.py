@@ -127,7 +127,7 @@ def userlogin(request):
             userpass = request.POST['userpass']
             login = teacher_account.objects.filter(
                 t_empid=userempid, t_pass=userpass)
-            if login:
+            if login:                
                 request.session['teacher_eid'] = userempid
                 return redirect('teacher/')
             else:

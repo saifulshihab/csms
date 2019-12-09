@@ -248,3 +248,13 @@ background: #0b0b0be6;
 .t_sidebar a{
 color: #579f57;
 }
+
+.t_class{
+    border-radius: 5px;
+    box-shadow: 5px 3px 5px#cccaca;
+    background: linear-gradient(to right,#e96443,#904e95);
+    padding: 30px 40px;
+}
+.navbar{
+  background: linear-gradient(to right,#000000 #434343) !important;
+}
