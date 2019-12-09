@@ -234,6 +234,7 @@ body {
 .allteacher .table, .teacher_verify .table, .head_verify .table, .assign_tech_table .table{
   text-align:center;
   border: 1px solid #ddd;
+  background: white;
 }
 .h_sidebar{
 background: #111011;
