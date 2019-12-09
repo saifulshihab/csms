@@ -1,38 +1,41 @@
 {% extends 'headmaster/h_base.html' %}
 {% block content %}
-                <div class="row teacher_verify">
-                    <table class="table" style="text-align: center;">
-                          <thead>
-                            <tr>
-                              <th scope="col">Teacher Name</th>
-                              <th scope="col">Teacher Email</th>
-                              <th scope="col">Employee ID</th>
-                              <th scope="col">School EIIN</th>
-                               <th scope="col">Phone</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                           {% for teacher in tv %}
+<div>
+  <h3 class="font-weight-bold mb-4 d-inline-block">Teacher Pending Registration</h3>
+</div>
+<div class="row teacher_verify">
+  <table class="table" style="text-align: center;">
+    <thead>
+      <tr>
+        <th scope="col">Teacher Name</th>
+        <th scope="col">Teacher Email</th>
+        <th scope="col">Employee ID</th>
+        <th scope="col">School EIIN</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for teacher in tv %}
 
-                            <tr>
-                              <td>{{ teacher.t_fullname }}</td>
-                                <td>{{ teacher.t_email}}</td>
-                              <td>{{ teacher.t_empid }}</td>
-                              <td>{{ teacher.sch_eiin}}</td>
-                                <td> {{ teacher.t_phone }}</td>
-                                <td>
-                                <a href="{{ teacher.approve_teacher }}" class="btn btn-sm btn-outline-success">Accept</a>
-                                <a href="{{ teacher.reject_teacher }}" class="btn btn-sm btn-outline-danger">Reject</a>
-                                </td>
-                            </tr>
-                             {% endfor %}                             
-                          </tbody>
-                    </table>
-                    {% if not tv %}
-                    <div class="justify-content-center d-block">
-                    <span class="text-danger">No teacher pending registration!</span>
-                  </div>
-                    {% endif %}
-            </div>           
+      <tr>
+        <td>{{ teacher.t_fullname }}</td>
+        <td>{{ teacher.t_email}}</td>
+        <td>{{ teacher.t_empid }}</td>
+        <td>{{ teacher.sch_eiin}}</td>
+        <td> {{ teacher.t_phone }}</td>
+        <td>
+          <a href="{{ teacher.approve_teacher }}" class="btn btn-sm btn-outline-success">Accept</a>
+          <a href="{{ teacher.reject_teacher }}" class="btn btn-sm btn-outline-danger">Reject</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if not tv %}
+  <div class="justify-content-center d-block">
+    <span class="text-danger">No teacher pending registration!</span>
+  </div>
+  {% endif %}
+</div>
 {% endblock %}

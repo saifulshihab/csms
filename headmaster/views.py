@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
 from initapp.models import teacher_verify, headmaster_account, teacher_account
 from school.models import schoolInfo
-
-
-# Create your views here.
+from .forms import assign_teacher_form
+from .models import assign_teacher
 
 
 def dashboard(request):
     if request.session.has_key('headmaster_eid'):
-        hob = headmaster_account.objects.get(h_empid=request.session.get('headmaster_eid'))
+        hob = headmaster_account.objects.get(
+            h_empid=request.session.get('headmaster_eid'))
         print(hob.sch_eiin)
         obj = schoolInfo.objects.get(SchoolEIIN=hob.sch_eiin)
         context = {'school': obj}
@@ -30,7 +30,8 @@ def about(request):
 
 
 def teacherverification(request):
-    s_eiin = headmaster_account.objects.get(h_empid=request.session.get('headmaster_eid'))
+    s_eiin = headmaster_account.objects.get(
+        h_empid=request.session.get('headmaster_eid'))
     check_ein = s_eiin.sch_eiin
     tv = teacher_verify.objects.filter(sch_eiin=check_ein)
     return render(request, 'headmaster/teacher_verification.html', {'tv': tv})
@@ -52,6 +53,32 @@ def teacher_approve(request, t_empid):
 
 
 def allteachers(request):
-    he = headmaster_account.objects.get(h_empid=request.session.get('headmaster_eid'))
+    he = headmaster_account.objects.get(
+        h_empid=request.session.get('headmaster_eid'))
     t_list = teacher_account.objects.filter(sch_eiin=he.sch_eiin)
     return render(request, 'headmaster/allteacher.html', {'teacher': t_list})
+
+
+def assign_teacherr(request):
+    form = assign_teacher_form()
+    """ form.fields["t_empid"] = models.forms.ModelMultipleChoiceField(
+        queryset=teacher_account.objects.filter(sch_eiin=request.session.get('headmaster_eid'))) """
+    if request.method == 'POST':
+        form = assign_teacher_form(request.POST)
+        if form.is_valid():
+            """ form.initial['sch_eiin'] = request.session.get(
+                'headmaster_eid') """
+            assign_teacher.objects.create(**form.cleaned_data)
+            form = assign_teacher_form()
+        else:
+            print(form.errors)
+    context = {'form': form}
+    return render(request, 'headmaster/assign_teacher.html', context)
+
+
+def change_tname(request):
+    ids = request.GET.get('ids')
+    obj = teacher_account.objects.get(t_empid=ids)
+    print(obj.t_fullname)
+    context = {'tname': obj}
+    return render(request, 'headmaster/assign_teacher.html', context)

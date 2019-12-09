@@ -11,7 +11,8 @@ class headmaster_account(models.Model):
     h_empid = models.CharField(max_length=100, primary_key=True)
     h_pass = models.CharField(max_length=50, blank=False, null=False)
     h_phone = models.CharField(max_length=50, blank=False, null=False)
-    sch_eiin = models.CharField(max_length=25, blank=False, null=False, default=None)
+    sch_eiin = models.CharField(
+        max_length=25, blank=False, null=False, default=None)
 
     def __str__(self):
         return self.h_fullname
@@ -23,7 +24,8 @@ class headmaster_verify(models.Model):
     h_empid = models.CharField(max_length=100, primary_key=True)
     h_pass = models.CharField(max_length=50, blank=False, null=False)
     h_phone = models.CharField(max_length=50, blank=False, null=False)
-    sch_eiin = models.CharField(max_length=25, blank=False, null=False, default=None)
+    sch_eiin = models.CharField(
+        max_length=25, blank=False, null=False, default=None)
 
     def __str__(self):
         return self.h_empid
@@ -41,10 +43,11 @@ class teacher_account(models.Model):
     t_empid = models.CharField(max_length=100, primary_key=True)
     t_pass = models.CharField(max_length=50, blank=False, null=False)
     t_phone = models.CharField(max_length=50, blank=False, null=False)
-    sch_eiin = models.CharField(max_length=25, blank=False, null=False, default=None)
+    sch_eiin = models.CharField(
+        max_length=25, blank=False, null=False, default=None)
 
     def __str__(self):
-        return self.t_fullname
+        return self.t_empid
 
 
 class student_account(models.Model):
@@ -63,9 +66,11 @@ class student_account(models.Model):
     ]
     s_roll = models.CharField(max_length=50, blank=False, null=False)
     s_pass = models.CharField(max_length=50, blank=False, null=False)
-    s_class = models.CharField(max_length=10, blank=False, null=False, choices=school_class)
+    s_class = models.CharField(
+        max_length=10, blank=False, null=False, choices=school_class)
     s_school = models.CharField(max_length=200, blank=False, null=False)
-    SchoolEIIN = models.CharField(max_length=25, blank=False, null=False, default=None)
+    SchoolEIIN = models.CharField(
+        max_length=25, blank=False, null=False, default=None)
 
     def __str__(self):
         return self.s_school
@@ -77,7 +82,8 @@ class teacher_verify(models.Model):
     t_empid = models.CharField(max_length=100, primary_key=True)
     t_pass = models.CharField(max_length=50, blank=False, null=False)
     t_phone = models.CharField(max_length=50, blank=False, null=False)
-    sch_eiin = models.CharField(max_length=25, blank=False, null=False, default=None)
+    sch_eiin = models.CharField(
+        max_length=25, blank=False, null=False, default=None)
 
     def __str__(self):
         return self.t_fullname
