@@ -231,12 +231,12 @@ body {
   border-radius: 5px;
   padding: 10px;
 }
-.allteacher .table, .teacher_verify .table, .head_verify .table{
+.allteacher .table, .teacher_verify .table, .head_verify .table, .assign_tech_table .table{
   text-align:center;
   border: 1px solid #ddd;
 }
 .h_sidebar{
-background: #240018;
+background: #111011;
 }
 .h_sidebar a{
 color: #a4039a;

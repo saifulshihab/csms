@@ -69,10 +69,13 @@ def assign_teacherr(request):
             """ form.initial['sch_eiin'] = request.session.get(
                 'headmaster_eid') """
             assign_teacher.objects.create(**form.cleaned_data)
-            form = assign_teacher_form()
+            form = assign_teacher_form()            
         else:
             print(form.errors)
-    context = {'form': form}
+    he = headmaster_account.objects.get(
+        h_empid=request.session.get('headmaster_eid'))
+    obj = assign_teacher.objects.filter(sch_eiin = he.sch_eiin)    
+    context = {'form': form, 'teacher': obj}
     return render(request, 'headmaster/assign_teacher.html', context)
 
 
@@ -81,4 +84,13 @@ def change_tname(request):
     obj = teacher_account.objects.get(t_empid=ids)
     print(obj.t_fullname)
     context = {'tname': obj}
+    return render(request, 'headmaster/assign_teacher.html', context)
+
+
+def delete_teacher(request, id):
+    assign_teacher.objects.filter(id=id).delete()
+    he = headmaster_account.objects.get(
+        h_empid=request.session.get('headmaster_eid'))
+    obj = assign_teacher.objects.filter(sch_eiin = he.sch_eiin)    
+    context = {'teacher': obj}
     return render(request, 'headmaster/assign_teacher.html', context)
