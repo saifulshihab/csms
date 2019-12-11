@@ -1,5 +1,9 @@
 body {
   background-color: whitesmoke;
+  @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+  @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+  /* font-family: 'Raleway', sans-serif; */
+  /* font-family: 'Roboto', sans-serif; */
 }
 /*base html*/
 .right_link ul {
@@ -64,7 +68,8 @@ body {
   margin-top: 50px;
   border-radius: 5px;
 }
-.usersignupform .select_radio label, .userloginform .select_radio label:hover{
+.usersignupform .select_radio label,
+.userloginform .select_radio label:hover {
   cursor: pointer;
 }
 .offloginform .oreg_alert,
@@ -231,30 +236,34 @@ body {
   border-radius: 5px;
   padding: 10px;
 }
-.allteacher .table, .teacher_verify .table, .head_verify .table, .assign_tech_table .table{
-  text-align:center;
+.allteacher .table,
+.teacher_verify .table,
+.head_verify .table,
+.assign_tech_table .table,
+.tabledesign {
+  text-align: center;
   border: 1px solid #ddd;
   background: white;
 }
-.h_sidebar{
-background: #111011;
+.h_sidebar {
+  background: #111011;
 }
-.h_sidebar a{
-color: #a4039a;
+.h_sidebar a {
+  color: #a4039a;
 }
-.t_sidebar{
-background: #0b0b0be6;
+.t_sidebar {
+  background: #0b0b0be6;
 }
-.t_sidebar a{
-color: #579f57;
+.t_sidebar a {
+  color: #579f57;
 }
 
-.t_class{
-    border-radius: 5px;
-    box-shadow: 5px 3px 5px#cccaca;
-    background: linear-gradient(to right,#e96443,#904e95);
-    padding: 30px 40px;
+.t_class {
+  border-radius: 5px;
+  box-shadow: 5px 3px 5px#cccaca;
+  background: linear-gradient(to right, #e96443, #904e95);
+  padding: 30px 40px;
 }
-.navbar{
-  background: linear-gradient(to right,#000000 #434343) !important;
+.navbar {
+  background: linear-gradient(to right, #000000 #434343) !important;
 }

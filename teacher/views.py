@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import teacher
-from initapp.models import student_account,teacher_account
+from initapp.models import student_account, teacher_account
 from school.models import schoolInfo
 from .forms import addstudentform
 from headmaster.models import assign_teacher
@@ -9,8 +8,9 @@ from headmaster.models import assign_teacher
 
 
 def dashboard(request):
-    if request.session.has_key('teacher_eid'):        
-        getclass = assign_teacher.objects.filter(t_empid=request.session.get('teacher_eid'))
+    if request.session.has_key('teacher_eid'):
+        getclass = assign_teacher.objects.filter(
+            t_empid=request.session.get('teacher_eid'))
         return render(request, 'teacher/dashboard.html', {'clas': getclass})
     else:
         return redirect('userlogin')
@@ -52,11 +52,8 @@ def addstudent(request):
         return render(request, 'teacher/add_student.html', {'sa': sa})
 
 
-
-
 def addstu(request):
-   pass
-
+    pass
 
 
 def allstudent(request):
@@ -68,9 +65,11 @@ def allstudent(request):
     return render(request, 'teacher/add_student.html', {'sa': sa})
 
 
-
-
-
-
-
-
+def enterClass(request, classno):
+    teacherSession = request.session.get('teacher_eid')
+    print(teacherSession)
+    tea_obj = teacher_account.objects.get(t_empid=teacherSession)
+    sc_eiin = str(tea_obj.sch_eiin)
+    sa = student_account.objects.filter(SchoolEIIN=sc_eiin, s_class=classno)
+    context = {'sa': sa, 'classno': classno}
+    return render(request, 'teacher/enter_class.html', context)

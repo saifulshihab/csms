@@ -6,5 +6,6 @@ urlpatterns = [
     path('teacher_logout', views.teach_logout, name='teach_logout'),
     path('addstudent', views.addstudent, name='addstudent'),
     path('addstu', views.addstu, name='addstu'),
-    path('allstudent', views.allstudent, name="allstudent")
+    path('allstudent', views.allstudent, name="allstudent"),
+    path('enterClass/<str:classno>', views.enterClass, name="enterClass")
 ]

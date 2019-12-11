@@ -18,6 +18,9 @@ class assign_teacher(models.Model):
 
     def __str__(self):
         return self.sch_eiin
+
     def delete_teacher(self):
         return f"./delete_teacher/{self.id}/"
 
+    def returnClassno(self):
+        return f"./enterClass/{self.classes}"

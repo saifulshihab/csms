@@ -1,0 +1,27 @@
+{% extends 'teacher/t_base.html' %}
+{% block content %}
+<h2 class="mb-3">All students of class {{classno}}</h2>
+<div class="row">
+    <div class="student_list">
+        <table class="table tabledesign">
+            <thead>
+                <tr>
+                    <th scope="col">Roll</th>
+                    <th scope="col">Class</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sa in sa %}
+                <tr>
+                    <td>{{ sa.s_roll }}</td>
+                    <td>{{ sa.s_class}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if not sa %}
+        <p class="text-danger">No student registered in this class.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

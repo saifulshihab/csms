@@ -6,6 +6,7 @@ from .models import student_feedback
 def loginsuccess(request):
     return render(request, 'student_dashboard.html')
 
+
 def send_feedback(request):
     feedback_form = feedbackForm()
     if request.method == 'POST':
@@ -17,6 +18,7 @@ def send_feedback(request):
             print(feedback_form.errors)
     context = {'form': feedback_form}
     return render(request, 'student_dashboard.html', context)
+
 
 def slogout(request):
     return redirect('home')
