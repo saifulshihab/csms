@@ -1,16 +1,64 @@
 {% extends 'teacher/t_base.html' %}
 {% block content %}
-<div class="row">
-    {% for clas in clas %}
-    <div class="t_class bg-primary col-3 mr-2 mb-2">
-        <a href="{{ clas.returnClassno }}" style="text-decoration:none;">
-            <h2 class="text-light font-weight-bold"><span style=" " class="">Class</span><span class="float-right">
-                    {{clas.classes}}</span></h2>
-        </a>
+<div class="school_wrap">
+    <div class="school_name mb-5">
+        <h1 style="font-weight:bold">{{school.schoolName}}</h1>
+        <div style="padding: 1px;background:#4b484b"></div>
+        <h2>School EIIN: {{school.SchoolEIIN}}</h2>
     </div>
-    {% endfor %}
-    {% if not clas %}
-    <p class="text-danger">You are not assigned to any class yet!</p>
-    {% endif %}
+    <div class="total_student">
+        <div class="row">
+            <div class="col">
+                <h3 class="float-left">Total Number Of Student</h3>
+                <span class="float-right">
+                    <h3 style="color: #1ca849;font-weight:bold">{{school.totalStudent}}</h3>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="total_teacher">
+        <div class="row">
+            <div class="col">
+                <h3 class="float-left">Total Teacher</h3>
+                <span class="float-right">
+                    <h3 style="color: #db0080;font-weight:bold">{{school.totalTeacher}}</h3>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="text-secondary">Male Teacher 12</p>
+                <p class="text-secondary">Female Teacher 4</p>
+            </div>
+        </div>
+    </div>
+    <div class="attendance">
+        <div class="row">
+            <div class="col">
+                <div class="attdays float-left">
+                    <h3 class="">Attendance</h3>
+                    <p class="text-secondary">Last 30 days</p>
+                </div>
+                <span class="float-right">
+                    <h3 style="color: #b505b5;font-weight:bold">
+                        {{school.attendance_percentage}}%</h3>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="attendance">
+        <div class="row">
+            <div class="col">
+                <div class="attdays float-left">
+                    <h3 class="">Passed</h3>
+                    <p class="text-secondary">Final Exam 2019</p>
+                </div>
+                <span class="float-right">
+                    <h3 style="color: #c2951a;font-weight:bold">
+                        {{school.pass_percentage}}%</h3>
+                </span>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock content %}

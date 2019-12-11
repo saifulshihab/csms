@@ -9,9 +9,20 @@ from headmaster.models import assign_teacher
 
 def dashboard(request):
     if request.session.has_key('teacher_eid'):
+        tb = teacher_account.objects.get(
+            t_empid=request.session.get('teacher_eid'))  # get teacher empid from session
+        obj = schoolInfo.objects.get(SchoolEIIN=tb.sch_eiin)
+        context = {'school': obj}
+        return render(request, 'teacher/dashboard.html', context)
+    else:
+        return redirect('userlogin')
+
+
+def classes(request):
+    if request.session.has_key('teacher_eid'):
         getclass = assign_teacher.objects.filter(
             t_empid=request.session.get('teacher_eid'))
-        return render(request, 'teacher/dashboard.html', {'clas': getclass})
+        return render(request, 'teacher/classes.html', {'clas': getclass})
     else:
         return redirect('userlogin')
 

@@ -7,5 +7,6 @@ urlpatterns = [
     path('addstudent', views.addstudent, name='addstudent'),
     path('addstu', views.addstu, name='addstu'),
     path('allstudent', views.allstudent, name="allstudent"),
+    path('classes', views.classes, name="classes"),
     path('enterClass/<str:classno>', views.enterClass, name="enterClass")
 ]

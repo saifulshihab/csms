@@ -12,7 +12,7 @@
         <th scope="col">Employee ID</th>
         <th scope="col">School EIIN</th>
         <th scope="col">Phone</th>
-        <th scope="col">Action</th>
+        <th scope="col">Accept/Reject</th>
       </tr>
     </thead>
     <tbody>
@@ -25,8 +25,9 @@
         <td>{{ teacher.sch_eiin}}</td>
         <td> {{ teacher.t_phone }}</td>
         <td>
-          <a href="{{ teacher.approve_teacher }}" class="btn btn-sm btn-outline-success">Accept</a>
-          <a href="{{ teacher.reject_teacher }}" class="btn btn-sm btn-outline-danger">Reject</a>
+          <a href="{{ teacher.approve_teacher }}" class="btn btn-sm btn-success"><i
+              class="fas fa-check"></i></a>
+          <a href="{{ teacher.reject_teacher }}" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
         </td>
       </tr>
       {% endfor %}

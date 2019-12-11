@@ -10,9 +10,9 @@
                 <th scope="col">Headmaster Name</th>
                 <th scope="col">Headmaster Email</th>
                 <th scope="col">Employee ID</th>
-                <th scope="col">School EIIN</th>
+                <th scope="col">EIIN</th>
                 <th scope="col">Phone</th>
-                <th scope="col">Action</th>
+                <th scope="col">Accept/Reject</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +23,9 @@
                 <td>{{ head.h_empid }}</td>
                 <td>{{ head.sch_eiin}}</td>
                 <td> {{ head.h_phone}}</td>
-                <td> <a class="btn btn-sm btn-outline-success" href="{{ head.approve_head }}">Accept</a>
-                    <a class="btn btn-sm btn-outline-danger" href="{{ head.get_absolute_url }}">Reject</a>
+                <td><a class="btn btn-sm btn-success" href="{{ head.approve_head }}"><i
+                            class="fas fa-check"></i></a>
+                    <a class="btn btn-sm btn-danger" href="{{ head.get_absolute_url }}"><i class="fas fa-times"></i></a>
                 </td>
             </tr>
             {% endfor %}

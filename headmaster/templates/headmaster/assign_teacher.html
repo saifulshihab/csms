@@ -12,7 +12,7 @@
                                 <th scope="col">Teacher EMP ID</th>
                                 <th scope="col">Assigned Classes</th>
                                 <th scope="col">School EIIN</th>
-                                <th scope="col">Action</th>                               
+                                <th scope="col">Remove</th>                               
                               </tr>
                             </thead>
                             <tbody>
@@ -22,7 +22,7 @@
                                 <td>{{ teacher.classes}}</td>
                                 <td>{{ teacher.sch_eiin }}</td>                                
                                 <td>                                  
-                                  <a href="{{ teacher.delete_teacher }}" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+                                  <a href="{{ teacher.delete_teacher }}" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
                                   </a>
                                 </td>
                               </tr>
@@ -40,7 +40,7 @@
             <form action="" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy }}
-                    <input type="submit" class="btn btn-sm btn-outline-success" value="Assign">
+                    <input type="submit" class="btn btn-sm btn-success" value="Assign">
             </form>
         </div>
         </div>

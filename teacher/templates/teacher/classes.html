@@ -1,0 +1,16 @@
+{% extends 'teacher/t_base.html' %}
+{% block content %}
+<div class="row">
+    {% for clas in clas %}
+    <div class="t_class bg-primary col-3 mr-2 mb-2">
+        <a href="{{ clas.returnClassno }}" style="text-decoration:none;">
+            <h2 class="text-light font-weight-bold"><span style=" " class="">Class</span><span class="float-right">
+                    {{clas.classes}}</span></h2>
+        </a>
+    </div>
+    {% endfor %}
+    {% if not clas %}
+    <p class="text-danger">You are not assigned to any class yet!</p>
+    {% endif %}
+</div>
+{% endblock content %}
