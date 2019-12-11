@@ -48,6 +48,9 @@ def teacher_approve(request, t_empid):
         t_fullname=ch.t_fullname, t_email=ch.t_email, t_empid=ch.t_empid, t_pass=ch.t_pass, t_phone=ch.t_phone,
         sch_eiin=ch.sch_eiin)
     teach_account_create.save()
+    tt = teacher_account.objects.filter(sch_eiin=ch.sch_eiin).count()
+    schoolInfo.objects.filter(
+        SchoolEIIN=ch.sch_eiin).update(totalTeacher=tt)
     teacher_verify.objects.filter(t_empid=t_empid).delete()
     return teacherverification(request)
 
@@ -69,12 +72,12 @@ def assign_teacherr(request):
             """ form.initial['sch_eiin'] = request.session.get(
                 'headmaster_eid') """
             assign_teacher.objects.create(**form.cleaned_data)
-            form = assign_teacher_form()            
+            form = assign_teacher_form()
         else:
             print(form.errors)
     he = headmaster_account.objects.get(
         h_empid=request.session.get('headmaster_eid'))
-    obj = assign_teacher.objects.filter(sch_eiin = he.sch_eiin)    
+    obj = assign_teacher.objects.filter(sch_eiin=he.sch_eiin)
     context = {'form': form, 'teacher': obj}
     return render(request, 'headmaster/assign_teacher.html', context)
 
@@ -91,7 +94,7 @@ def delete_teacher(request, id):
     assign_teacher.objects.filter(id=id).delete()
     he = headmaster_account.objects.get(
         h_empid=request.session.get('headmaster_eid'))
-    obj = assign_teacher.objects.filter(sch_eiin = he.sch_eiin)    
+    obj = assign_teacher.objects.filter(sch_eiin=he.sch_eiin)
     context = {'teacher': obj}
-    return assign_teacherr(request)     
+    return assign_teacherr(request)
     return render(request, 'headmaster/assign_teacher.html', context)

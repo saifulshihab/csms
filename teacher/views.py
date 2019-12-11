@@ -35,6 +35,7 @@ def teach_logout(request):
         pass
     return redirect('home')
 
+
 def allstudent(request):
     teacherSession = request.session.get('teacher_eid')
     print(teacherSession)
@@ -85,6 +86,9 @@ def enterClass(request, classno):
                                                      s_school=sch_name,
                                                      SchoolEIIN=sc_eiin)
             student_account_create.save()
+            ts = student_account.objects.filter(SchoolEIIN=sc_eiin).count()
+            schoolInfo.objects.filter(
+                SchoolEIIN=sc_eiin).update(totalStudent=ts)
             sa = student_account.objects.filter(
                 SchoolEIIN=sc_eiin, s_class=stuClass)
 

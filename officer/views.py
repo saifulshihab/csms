@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from officer.models import officer_account
 from django.contrib import messages
 from school.models import schoolInfo
-from initapp.models import headmaster_account, teacher_account, headmaster_verify
+from initapp.models import headmaster_account, teacher_account, headmaster_verify, student_account
 from student.models import student_feedback
 # Create your views here.
 
@@ -86,33 +86,48 @@ def logout(request):
 def school_detail(request, school_eiin):
     try:
         school_obj = schoolInfo.objects.get(SchoolEIIN=school_eiin)
+        total_student = student_account.objects.filter(
+            SchoolEIIN=school_eiin).count()
+        total_teacher = teacher_account.objects.filter(
+            sch_eiin=school_eiin).count()
         headmaster_obj = headmaster_account.objects.filter(
             sch_eiin=school_eiin)
         teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
-        feedback = student_feedback.objects.filter(school=school_obj.schoolName)
-        context = {'school': school_obj, 'headmaster': headmaster_obj, 'feedback':feedback}
+        feedback = student_feedback.objects.filter(
+            school=school_obj.schoolName)
+        context = {'school': school_obj,
+                   'headmaster': headmaster_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher}
         if headmaster_obj and teacher_list_obj:
             headmaster_obj = headmaster_account.objects.get(
                 sch_eiin=school_eiin)
-            feedback = student_feedback.objects.filter(school=school_obj.schoolName)
-            teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
+            feedback = student_feedback.objects.filter(
+                school=school_obj.schoolName)
+            teacher_list_obj = teacher_account.objects.filter(
+                sch_eiin=school_eiin)
             context = {'school': school_obj,
-                       'headmaster': headmaster_obj, 'teacher': teacher_list_obj, 'feedback':feedback}
+                       'headmaster': headmaster_obj, 'teacher': teacher_list_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher}
             return render(request, 'school_detail_view.html', context)
         elif headmaster_obj:
             headmaster_obj = headmaster_account.objects.get(
                 sch_eiin=school_eiin)
-            feedback = student_feedback.objects.filter(school=school_obj.schoolName)
-            context = {'school': school_obj, 'headmaster': headmaster_obj, 'feedback':feedback}            
+            feedback = student_feedback.objects.filter(
+                school=school_obj.schoolName)
+            context = {'school': school_obj,
+                       'headmaster': headmaster_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher}
             return render(request, 'school_detail_view.html', context)
         elif teacher_list_obj:
-            teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
-            feedback = student_feedback.objects.filter(school=school_obj.schoolName)
-            context = {'school': school_obj, 'teacher': teacher_list_obj, 'feedback':feedback}            
+            teacher_list_obj = teacher_account.objects.filter(
+                sch_eiin=school_eiin)
+            feedback = student_feedback.objects.filter(
+                school=school_obj.schoolName)
+            context = {'school': school_obj,
+                       'teacher': teacher_list_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher}
             return render(request, 'school_detail_view.html', context)
         else:
-            feedback = student_feedback.objects.filter(school=school_obj.schoolName)
-            context = {'school': school_obj, 'feedback': feedback}            
+            feedback = student_feedback.objects.filter(
+                school=school_obj.schoolName)
+            context = {'school': school_obj, 'feedback': feedback,
+                       'total_student': total_student, 'total_teacher': total_teacher}
             return render(request, 'school_detail_view.html', context)
     except schoolInfo.DoesNotExist:
         raise Http404
@@ -133,24 +148,28 @@ def student_feedbacks(request):
         obj = student_feedback.objects.all()
         return render(request, 'student_feedback.html', {'feedback': obj})
 
+
 def reject_head(request, h_empid):
     print(h_empid)
     headmaster_verify.objects.filter(h_empid=h_empid).delete()
     hv = headmaster_verify.objects.all()
     return render(request, 'hverify.html', {'hv': hv})
 
+
 def head_approve(request, h_empid):
     ch = headmaster_verify.objects.get(h_empid=h_empid)
     head_account_create = headmaster_account(
-                            h_fullname=ch.h_fullname, h_email=ch.h_email, h_empid=ch.h_empid, h_pass=ch.h_pass, h_phone=ch.h_phone, sch_eiin=ch.sch_eiin)
+        h_fullname=ch.h_fullname, h_email=ch.h_email, h_empid=ch.h_empid, h_pass=ch.h_pass, h_phone=ch.h_phone, sch_eiin=ch.sch_eiin)
     head_account_create.save()
     headmaster_verify.objects.filter(h_empid=h_empid).delete()
     hv = headmaster_verify.objects.all()
-    return render(request, 'hverify.html', {'hv': hv})                                
+    return render(request, 'hverify.html', {'hv': hv})
+
 
 def allheadmasters(request):
     obj = headmaster_account.objects.all()
     return render(request, 'allheadmaster.html', {'headmasters': obj})
+
 
 def registered_schools(request):
     obj = schoolInfo.objects.all()
