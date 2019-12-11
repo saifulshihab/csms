@@ -1,17 +1,17 @@
 {% extends 'teacher/t_base.html' %}
 <!--{% load crispy_forms_tags %} -->
 {% block content %}
-<form method="POST">
+<!--<form method="POST">
   {% csrf_token %}
   <input type="text" id="roll" name="roll" placeholder="Student Roll">
   <input type="text" id="class" name="class" placeholder="class">
-  <!--  <select id="class" name="class">
+   <select id="class" name="class">
         <option>------------------</option>
         {% for cls in stuobj %}
         <option value={{cls.s_class}}>{{cls.s_class}}</option>
         {% endfor %}
     </select>  -->
-  <input type="text" id="password" name="password" placeholder="password">
+ <!-- <input type="text" id="password" name="password" placeholder="password">
   <input type="submit" class="btn btn-sm btn-outline-info" value="Submit">
 </form>
 
@@ -42,7 +42,7 @@
     <span class="text-danger">No Student registration yet!</span>
   </div>
   {% endif %}
-</div>
+</div> -->
 
 
 
