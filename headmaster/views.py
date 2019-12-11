@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from initapp.models import teacher_verify, headmaster_account, teacher_account
+from initapp.models import teacher_verify, headmaster_account, teacher_account, student_account
 from school.models import schoolInfo
 from .forms import assign_teacher_form
 from .models import assign_teacher
@@ -9,9 +9,13 @@ def dashboard(request):
     if request.session.has_key('headmaster_eid'):
         hob = headmaster_account.objects.get(
             h_empid=request.session.get('headmaster_eid'))
-        print(hob.sch_eiin)
         obj = schoolInfo.objects.get(SchoolEIIN=hob.sch_eiin)
-        context = {'school': obj}
+        total_student = student_account.objects.filter(
+            SchoolEIIN=hob.sch_eiin).count()
+        total_teacher = teacher_account.objects.filter(
+            sch_eiin=hob.sch_eiin).count()
+        context = {'school': obj, 'total_student': total_student,
+                   'total_teacher': total_teacher}
         return render(request, 'headmaster/dashboard.html', context)
     else:
         return redirect('userlogin')

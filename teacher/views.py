@@ -13,7 +13,12 @@ def dashboard(request):
         tb = teacher_account.objects.get(
             t_empid=request.session.get('teacher_eid'))  # get teacher empid from session
         obj = schoolInfo.objects.get(SchoolEIIN=tb.sch_eiin)
-        context = {'school': obj}
+        total_student = student_account.objects.filter(
+            SchoolEIIN=tb.sch_eiin).count()
+        total_teacher = teacher_account.objects.filter(
+            sch_eiin=tb.sch_eiin).count()
+        context = {'school': obj, 'total_student': total_student,
+                   'total_teacher': total_teacher}
         return render(request, 'teacher/dashboard.html', context)
     else:
         return redirect('userlogin')

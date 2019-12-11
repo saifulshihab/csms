@@ -1,65 +1,65 @@
 {% extends 'headmaster/h_base.html' %}
 {% block content %}
-        <div class="school_wrap">
-                <div class="school_name mb-5">
-                    <h1 style="font-weight:bold">{{school.schoolName}}</h1>
-                    <div style="padding: 1px;background:#4b484b"></div>
-                    <h2>School EIIN: {{school.SchoolEIIN}}</h2>
+<div class="school_wrap">
+    <div class="school_name mb-5">
+        <h1 style="font-weight:bold">{{school.schoolName}}</h1>
+        <div style="padding: 1px;background:#4b484b"></div>
+        <h2>School EIIN: {{school.SchoolEIIN}}</h2>
+    </div>
+    <div class="total_student">
+        <div class="row">
+            <div class="col">
+                <h3 class="float-left">Total Number Of Student</h3>
+                <span class="float-right">
+                    <h3 style="color: #1ca849;font-weight:bold">{{total_student}}</h3>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="total_teacher">
+        <div class="row">
+            <div class="col">
+                <h3 class="float-left">Total Teacher</h3>
+                <span class="float-right">
+                    <h3 style="color: #db0080;font-weight:bold">{{total_teacher}}</h3>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="text-secondary">Male Teacher 12</p>
+                <p class="text-secondary">Female Teacher 4</p>
+            </div>
+        </div>
+    </div>
+    <div class="attendance">
+        <div class="row">
+            <div class="col">
+                <div class="attdays float-left">
+                    <h3 class="">Attendance</h3>
+                    <p class="text-secondary">Last 30 days</p>
                 </div>
-                <div class="total_student">
-                    <div class="row">
-                        <div class="col">
-                            <h3 class="float-left">Total Number Of Student</h3>
-                            <span class="float-right">
-                                <h3 style="color: #1ca849;font-weight:bold">{{school.totalStudent}}</h3>
-                            </span>
-                        </div>
-                    </div>
+                <span class="float-right">
+                    <h3 style="color: #b505b5;font-weight:bold">
+                        {{school.attendance_percentage}}%</h3>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="attendance">
+        <div class="row">
+            <div class="col">
+                <div class="attdays float-left">
+                    <h3 class="">Passed</h3>
+                    <p class="text-secondary">Final Exam 2019</p>
                 </div>
-                <div class="total_teacher">
-                    <div class="row">
-                        <div class="col">
-                            <h3 class="float-left">Total Teacher</h3>
-                            <span class="float-right">
-                                <h3 style="color: #db0080;font-weight:bold">{{school.totalTeacher}}</h3>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p class="text-secondary">Male Teacher 12</p>
-                            <p class="text-secondary">Female Teacher 4</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="attendance">
-                    <div class="row">
-                        <div class="col">
-                            <div class="attdays float-left">
-                                <h3 class="">Attendance</h3>
-                                <p class="text-secondary">Last 30 days</p>
-                            </div>
-                            <span class="float-right">
-                                <h3 style="color: #b505b5;font-weight:bold">
-                                    {{school.attendance_percentage}}%</h3>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="attendance">
-                    <div class="row">
-                        <div class="col">
-                            <div class="attdays float-left">
-                                <h3 class="">Passed</h3>
-                                <p class="text-secondary">Final Exam 2019</p>
-                            </div>
-                            <span class="float-right">
-                                <h3 style="color: #c2951a;font-weight:bold">
-                                    {{school.pass_percentage}}%</h3>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>                    
+                <span class="float-right">
+                    <h3 style="color: #c2951a;font-weight:bold">
+                        {{school.pass_percentage}}%</h3>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
