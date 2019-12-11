@@ -102,11 +102,11 @@ def enterClass(request, classno):
         if request.method == 'POST':
             stuRoll = request.POST['roll']
             stuPass = request.POST['password']
-            print(stuRoll)
-            print(stuPass)
-            print(stuClass)
-            print(sch_name)
-            print(sc_eiin)
+            #print(stuRoll)
+            #print(stuPass)
+            #print(stuClass)
+            #print(sch_name)
+            #print(sc_eiin)
             student_account_create = student_account(s_roll=stuRoll, s_pass=stuPass, s_class=stuClass,
                                                      s_school=sch_name,
                                                      SchoolEIIN=sc_eiin)
@@ -123,10 +123,6 @@ def enterClass(request, classno):
             context = {'sad': sad, 'classno': classno, 'sa': sa}
             return render(request, 'teacher/enter_class.html', context)
 
-        #context = {'sad': sad, 'classno': classno}
-        #return render(request, 'teacher/enter_class.html', context)
-
-
-       #return render(request, 'teacher/enter_class.html', {'sa': sa})
+        
 
 
