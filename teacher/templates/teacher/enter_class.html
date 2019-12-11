@@ -1,13 +1,23 @@
 {% extends 'teacher/t_base.html' %}
 {% block content %}
 <h2 class="mb-3">All students of class {{classno}}</h2>
-<form method="POST">
-  {% csrf_token %}
-  <input type="text" id="roll" name="roll" placeholder="Student Roll">
-  <input type="text" id="password" name="password" placeholder="password">
-  <input type="submit" class="btn btn-sm btn-outline-info" value="Submit">
-</form>
-
+<div class="mb-5" style="margin-left:-15px ">
+  <form method="POST">
+    {% csrf_token %}
+    <div class="input-group">
+      <input class="form-control mr-3" type="text" id="roll" name="roll" placeholder="Student Roll" required>
+      <input class="form-control mr-3" type="text" id="password" name="password" placeholder="password" required>
+      <input type="submit" class="btn btn-sm btn-info" value="Add">
+    </div>
+  </form>
+  <div>
+    {% if messages %}
+    {% for msg in messages %}
+    <p class="text-danger">{{msg}}</p>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
 <div class="row teacher_verify">
   <table class="table" style="text-align: center;">
     <thead>
