@@ -103,3 +103,8 @@ def delete_teacher(request, id):
     context = {'teacher': obj}
     return assign_teacherr(request)
     return render(request, 'headmaster/assign_teacher.html', context)
+
+def account_details(request):
+    obj = headmaster_account.objects.get(h_empid = request.session.get('headmaster_eid'))
+    context = {'headmaster': obj}
+    return render(request, 'headmaster/account.html', context)

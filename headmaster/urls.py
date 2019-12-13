@@ -15,5 +15,6 @@ urlpatterns = [
     path('allteacher', views.allteachers, name="allteachers"),
     path('assign_teacher', views.assign_teacherr, name="assign_teacher"),
     path('change_tname', views.change_tname, name="change_tname"),
-    path('delete_teacher/<int:id>/', views.delete_teacher, name="delete_teacher")
+    path('delete_teacher/<int:id>/', views.delete_teacher, name="delete_teacher"),
+    path('account_details', views.account_details, name="account_details")
 ]
