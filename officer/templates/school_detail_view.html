@@ -170,26 +170,28 @@
 
             </div>
         </div>
-        <div class="actiontab-content" id="assco">
-            <form>
-                <div class="form-group">
-                    <label for="">Select Co-ordinator</label>
-                    <select name="" id="" class="form-control">
-                        <option value="">Saiful islam</option>
-                        <option value="">Saimon Hotel</option>
-                        <option value="">Joy Roy</option>
-                        <option value="">Saiful islam</option>
-                        <option value="">Not Needed</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-sm btn-primary">Assign</button>
-            </form>
+        <div class="actiontab-content" id="assco">                            
+                    <form action="../assign_co/{{school.SchoolEIIN}}" method="POST">
+                        <div class="form-group">
+                            <label for="">Select Co-ordinator</label>
+                         <select name="name" id="" class="form-control">
+                             <option value=""selected disabled></option>
+                       {% for co in co %}
+                       <option value="">{{co.name}}</option>
+                       {%endfor%}
+                        </select>
+                        </div>
+                         <button type="submit" class="btn btn-sm btn-primary">Assign</button>            
+                    </form>
+                    <table>
+                        
+                    </table>
         </div>
     </div>
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#headmaster").hide();
+        //$("#headmaster").hide();
         $("#allteacher").hide();
         $("#stdfb").hide();
         $("#assco").hide();

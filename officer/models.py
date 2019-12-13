@@ -12,3 +12,16 @@ class officer_account(models.Model):
 
     def __str__(self):
         return self.oempid
+
+class coordiinator(models.Model):
+    name = models.CharField(max_length=50)
+    phone = models.CharField(max_length=11)
+
+    def __str__(self):
+        return self.name
+
+class assign_cordinator(models.Model):
+    name = models.CharField(max_length=50, blank=False)
+    phone = models.CharField(max_length=11)
+    sch_eiin = models.CharField(max_length=20)
+    

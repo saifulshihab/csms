@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.shortcuts import redirect
-from officer.models import officer_account
+from officer.models import officer_account, coordiinator, assign_cordinator
 from django.contrib import messages
 from school.models import schoolInfo
 from initapp.models import headmaster_account, teacher_account, headmaster_verify, student_account
@@ -93,10 +93,11 @@ def school_detail(request, school_eiin):
         headmaster_obj = headmaster_account.objects.filter(
             sch_eiin=school_eiin)
         teacher_list_obj = teacher_account.objects.filter(sch_eiin=school_eiin)
+        co = coordiinator.objects.all()
         feedback = student_feedback.objects.filter(
             school=school_obj.schoolName)
         context = {'school': school_obj,
-                   'headmaster': headmaster_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher}
+                   'headmaster': headmaster_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher, 'co':co}
         if headmaster_obj and teacher_list_obj:
             headmaster_obj = headmaster_account.objects.get(
                 sch_eiin=school_eiin)
@@ -105,7 +106,7 @@ def school_detail(request, school_eiin):
             teacher_list_obj = teacher_account.objects.filter(
                 sch_eiin=school_eiin)
             context = {'school': school_obj,
-                       'headmaster': headmaster_obj, 'teacher': teacher_list_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher}
+                       'headmaster': headmaster_obj, 'teacher': teacher_list_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher, 'co':co}
             return render(request, 'school_detail_view.html', context)
         elif headmaster_obj:
             headmaster_obj = headmaster_account.objects.get(
@@ -113,7 +114,7 @@ def school_detail(request, school_eiin):
             feedback = student_feedback.objects.filter(
                 school=school_obj.schoolName)
             context = {'school': school_obj,
-                       'headmaster': headmaster_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher}
+                       'headmaster': headmaster_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher, 'co':co}
             return render(request, 'school_detail_view.html', context)
         elif teacher_list_obj:
             teacher_list_obj = teacher_account.objects.filter(
@@ -121,13 +122,13 @@ def school_detail(request, school_eiin):
             feedback = student_feedback.objects.filter(
                 school=school_obj.schoolName)
             context = {'school': school_obj,
-                       'teacher': teacher_list_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher}
+                       'teacher': teacher_list_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher, 'co':co}
             return render(request, 'school_detail_view.html', context)
         else:
             feedback = student_feedback.objects.filter(
                 school=school_obj.schoolName)
             context = {'school': school_obj, 'feedback': feedback,
-                       'total_student': total_student, 'total_teacher': total_teacher}
+                       'total_student': total_student, 'total_teacher': total_teacher, 'co':co}
             return render(request, 'school_detail_view.html', context)
     except schoolInfo.DoesNotExist:
         raise Http404
@@ -174,3 +175,11 @@ def allheadmasters(request):
 def registered_schools(request):
     obj = schoolInfo.objects.all()
     return render(request, 'registered_schools.html', {'schools': obj})
+
+
+def assign_co(request, se):
+    if request.method=='POST':
+        name = request.POST['name']        
+        phn = coordiinator.objects.get(name=name).h_phone
+        assign_cordinator.objects.create(name=name, phone=phn, sch_eiin = se)
+        return render(request, 'school_detail_view.html')

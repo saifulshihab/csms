@@ -16,5 +16,6 @@ urlpatterns = [
     path('reject_head/<str:h_empid>/', views.reject_head, name="reject_head"),
     path('head_approve/<str:h_empid>/', views.head_approve, name="head_approve"),
     path('allheadmaster', views.allheadmasters, name="allheadmasters"),
-    path('registered_schools', views.registered_schools, name="registered_schools")
+    path('registered_schools', views.registered_schools, name="registered_schools"),
+    path('assign_co/<str:se>', views.assign_co, name="assign_co")
 ]
