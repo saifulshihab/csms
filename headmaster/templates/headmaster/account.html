@@ -1,0 +1,32 @@
+{% extends 'headmaster/h_base.html' %}
+{% block content %}
+<div class="header">
+  <h3 class="font-weight-bold mb-4 d-inline-block">Account Details</h3>
+</div>
+<div class="row account">
+  <table>
+      <tr>          
+          <tr>
+              <th>Name</th>
+              <td>{{ headmaster.h_fullname }}</td>              
+          </tr>
+          <tr>
+            <th>Employee ID</th>
+            <td>{{headmaster.h_empid}}</td>              
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{headmaster.h_email}}</td>              
+        </tr>
+        <tr>
+            <th>EIIN</th>
+            <td>{{headmaster.sch_eiin}}</td>              
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>{{headmaster.h_phone}}</td>              
+        </tr>
+      </tr>
+  </table>
+</div>
+{% endblock %}

@@ -76,7 +76,7 @@ def enterClass(request, classno):
     if request.method == 'POST':
         stuRoll = request.POST['roll']
         stuPass = request.POST['password']
-        check_multiple = student_account.objects.filter(s_roll=stuRoll, s_pass=stuPass, s_class=stuClass,
+        check_multiple = student_account.objects.filter(s_roll=stuRoll, s_class=stuClass,
                                                         s_school=sch_name,
                                                         SchoolEIIN=sc_eiin)
         if check_multiple:
@@ -112,3 +112,8 @@ def enterClass(request, classno):
     # return render(request, 'teacher/enter_class.html', context)
 
    # return render(request, 'teacher/enter_class.html', {'sa': sa})
+
+def taccount_details(request):
+    obj = teacher_account.objects.get(t_empid = request.session.get('teacher_eid'))
+    context = {'teacher': obj}
+    return render(request, 'teacher/account.html', context)

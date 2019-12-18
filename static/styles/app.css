@@ -275,3 +275,7 @@ body {
 .navbar {
   background: linear-gradient(to right, #000000 #434343) !important;
 }
+
+.header{
+  margin-left: -15px;
+}

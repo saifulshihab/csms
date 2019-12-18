@@ -75,7 +75,8 @@ def assign_teacherr(request):
         if form.is_valid():
             """ form.initial['sch_eiin'] = request.session.get(
                 'headmaster_eid') """
-            assign_teacher.objects.create(**form.cleaned_data)
+            eiin = headmaster_account.objects.get(h_empid=request.session.get('headmaster_eid'))           
+            assign_teacher.objects.create(**form.cleaned_data,sch_eiin=eiin.sch_eiin)
             form = assign_teacher_form()
         else:
             print(form.errors)
@@ -102,3 +103,8 @@ def delete_teacher(request, id):
     context = {'teacher': obj}
     return assign_teacherr(request)
     return render(request, 'headmaster/assign_teacher.html', context)
+
+def account_details(request):
+    obj = headmaster_account.objects.get(h_empid = request.session.get('headmaster_eid'))
+    context = {'headmaster': obj}
+    return render(request, 'headmaster/account.html', context)
