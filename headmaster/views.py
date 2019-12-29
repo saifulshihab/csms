@@ -4,11 +4,13 @@ from school.models import schoolInfo
 from .forms import assign_teacher_form
 from .models import assign_teacher
 
+def headmasterSession(request):
+    return headmaster_account.objects.get(
+        h_empid=request.session.get('headmaster_eid'))
 
 def dashboard(request):
     if request.session.has_key('headmaster_eid'):
-        hob = headmaster_account.objects.get(
-            h_empid=request.session.get('headmaster_eid'))
+        hob = headmasterSession(request)
         obj = schoolInfo.objects.get(SchoolEIIN=hob.sch_eiin)
         total_student = student_account.objects.filter(
             SchoolEIIN=hob.sch_eiin).count()
@@ -19,7 +21,6 @@ def dashboard(request):
         return render(request, 'headmaster/dashboard.html', context)
     else:
         return redirect('userlogin')
-
 
 def head_logout(request):
     try:
@@ -34,8 +35,7 @@ def about(request):
 
 
 def teacherverification(request):
-    s_eiin = headmaster_account.objects.get(
-        h_empid=request.session.get('headmaster_eid'))
+    s_eiin = headmasterSession(request)
     check_ein = s_eiin.sch_eiin
     tv = teacher_verify.objects.filter(sch_eiin=check_ein)
     return render(request, 'headmaster/teacher_verification.html', {'tv': tv})
@@ -49,8 +49,13 @@ def teacher_reject(request, t_empid):
 def teacher_approve(request, t_empid):
     ch = teacher_verify.objects.get(t_empid=t_empid)
     teach_account_create = teacher_account(
-        t_fullname=ch.t_fullname, t_email=ch.t_email, t_empid=ch.t_empid, t_pass=ch.t_pass, t_phone=ch.t_phone,
-        sch_eiin=ch.sch_eiin)
+        t_fullname=ch.t_fullname, 
+        t_email=ch.t_email, 
+        t_empid=ch.t_empid, 
+        t_pass=ch.t_pass, 
+        t_phone=ch.t_phone,
+        sch_eiin=ch.sch_eiin
+    )
     teach_account_create.save()
     tt = teacher_account.objects.filter(sch_eiin=ch.sch_eiin).count()
     schoolInfo.objects.filter(
@@ -60,8 +65,7 @@ def teacher_approve(request, t_empid):
 
 
 def allteachers(request):
-    he = headmaster_account.objects.get(
-        h_empid=request.session.get('headmaster_eid'))
+    he = headmasterSession(request)
     t_list = teacher_account.objects.filter(sch_eiin=he.sch_eiin)
     return render(request, 'headmaster/allteacher.html', {'teacher': t_list})
 
@@ -80,8 +84,7 @@ def assign_teacherr(request):
             form = assign_teacher_form()
         else:
             print(form.errors)
-    he = headmaster_account.objects.get(
-        h_empid=request.session.get('headmaster_eid'))
+    he = headmasterSession(request)
     obj = assign_teacher.objects.filter(sch_eiin=he.sch_eiin)
     context = {'form': form, 'teacher': obj}
     return render(request, 'headmaster/assign_teacher.html', context)
@@ -97,8 +100,7 @@ def change_tname(request):
 
 def delete_teacher(request, id):
     assign_teacher.objects.filter(id=id).delete()
-    he = headmaster_account.objects.get(
-        h_empid=request.session.get('headmaster_eid'))
+    he = headmasterSession(request)
     obj = assign_teacher.objects.filter(sch_eiin=he.sch_eiin)
     context = {'teacher': obj}
     return assign_teacherr(request)
