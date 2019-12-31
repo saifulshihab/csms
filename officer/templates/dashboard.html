@@ -4,10 +4,9 @@
     {% for sch in school %}
     <div class="col-4 mb-4">
         <div class="school">
+            <a href="{{ sch.get_absolute_url }}">
             <div class="school_name">
-                <a href="{{ sch.get_absolute_url }}">
-                    <h5 class="font-weight-bold">{{ sch.schoolName }}</h5>
-                </a>
+                <h5 class="font-weight-bold">{{ sch.schoolName }}</h5>
             </div>
             <div class="school_info">
                 <div class="info">
@@ -37,9 +36,10 @@
                     </div>
                 </div>
             </div>
+            </a>
         </div>
     </div>
     <div class=""></div>
     {% endfor %}
-</div>       
-{% endblock content %}    
+</div>
+{% endblock content %}
