@@ -56,15 +56,15 @@ def enterClass(request, classno):
     cls = classno
     # print(cls)
     if (cls == '6'):
-        stuClass = 'Six'
+        stuClass = '6'
     elif (cls == '7'):
-        stuClass = 'Seven'
+        stuClass = '7'
     elif (cls == '8'):
-        stuClass = 'Eight'
+        stuClass = '8'
     elif (cls == '9'):
-        stuClass = 'Nine'
+        stuClass = '9'
     elif (cls == '10'):
-        stuClass = 'Ten'
+        stuClass = '10'
     # print(stuClass)
     tea_obj = teacher_account.objects.get(t_empid=teacherSession)
     sc_eiin = str(tea_obj.sch_eiin)

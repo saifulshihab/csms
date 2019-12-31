@@ -155,4 +155,6 @@ def userlogin(request):
         elif request.session.has_key('teacher_eid'):
             return redirect('teacher/')
         else:'''
-        return render(request, 'userlogin.html')
+        obj = schoolInfo.objects.all()
+        context =  {'school': obj}        
+        return render(request, 'userlogin.html', context)
