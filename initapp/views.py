@@ -143,7 +143,9 @@ def userlogin(request):
             stdlogin = student_account.objects.filter(
                 s_roll=std_roll, s_pass=std_pass, s_school=std_sch, s_class=std_cls)
             if stdlogin:
-                # request.session['teacher_eid'] = userempid
+                request.session['std_roll'] = std_roll
+                request.session['std_sch'] = std_sch
+                request.session['std_class'] = std_cls
                 return redirect('student/loginsuccess/')
             else:
                 messages.success(
