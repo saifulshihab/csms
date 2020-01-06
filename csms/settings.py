@@ -147,4 +147,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 
 
-#Copyright 2019. All Rights Resereved. saifulshihab-github.io/saiful-portfolio
+#Copyright 2019. All Rights Resereved. https://github.com/saifulshihab
+#Never try to remove copyright text. You will be caught:) 

@@ -15,11 +15,7 @@
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="selecteduser" id="teacher" value="teacher">
                 <label class="form-check-label" for="teacher">Teacher</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="selecteduser" id="student" value="student">
-                <label class="form-check-label" for="student">Student</label>
-            </div>
+            </div>            
         </div>
         <div class="mt-3">
             {% if messages %}
@@ -76,72 +72,6 @@
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="selecteduser" id="student" value="student">
-                        <label class="form-check-label" for="student">Student</label>
-                    </div>
-                </div>
-                <input type="submit" class="btn btn-outline-success btn-sm float-right" value="Register">
-                <span><a href="userbacklogin" class="text-secondary" style="font-size:13px">Back to login</a></span>
-            </form>
-        </div>
-        <div id="student_regform">
-            <form action="userregistration" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="form-group">
-                    <input type="text" placeholder="Your Roll Number" name="student_roll" id="student_roll"
-                        class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Create password" name="student_pass" id="student_pass"
-                        class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Confirm password" name="student_cpass" id="student_cpass"
-                        class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <select name="student_class" id="student_class" id="" class="form-control" required>
-                        <option value="" disabled selected>--Select your class--</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select name="student_school" id="student_school" id="" class="form-control" required>
-                        <option value="" disabled selected>--Select your school--</option>
-                        <option value="Government Laboratory High School">Government Laboratory High School</option>
-                        <option value="Viqarunnisa Noon School">Viqarunnisa Noon School</option>
-                        <option value="Rifles Public School and College">Rifles Public School and College</option>
-                        <option value="Dhaka Residential Model School and College">Dhaka Residential Model School and
-                            College
-                        </option>
-                        <option value="Rajuk Uttara Model School & College">Rajuk Uttara Model School & College</option>
-                        <option value="Dhanmondi Government Boys’ High School">Dhanmondi Government Boys’ High School
-                        </option>
-                        <option value="Saint Joseph Higher Secondary School">Saint Joseph Higher Secondary School
-                        </option>
-                        <option value="St. Gregory’s High School">St. Gregory’s High School</option>
-                        <option value="Motijheel Government Boys High school"> Motijheel Government Boys High school
-                        </option>
-                        <option value="Mirpur Govt. High School">Mirpur Govt. High School</option>
-                    </select>
-                </div>
-                <div class="form-group mt-2 d-none">
-                    <span class="d-inline-block mr-3 text-success">Select User Type</span>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="selecteduser" id="headmaster"
-                            value="headmaster" required>
-                        <label class="form-check-label" for="headmaster">Headmaster</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="selecteduser" id="teacher" value="teacher">
-                        <label class="form-check-label" for="teacher">Teacher</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="selecteduser" id="is_student"
-                            value="student">
                         <label class="form-check-label" for="student">Student</label>
                     </div>
                 </div>

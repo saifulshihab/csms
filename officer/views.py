@@ -96,8 +96,14 @@ def school_detail(request, school_eiin):
         co = coordiinator.objects.all()
         feedback = student_feedback.objects.filter(
             school=school_obj.schoolName)
-        context = {'school': school_obj,
-                   'headmaster': headmaster_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher, 'co':co}
+        context = {
+            'school': school_obj,
+            'headmaster': headmaster_obj,
+            'feedback': feedback, 
+            'total_student': total_student, 
+            'total_teacher': total_teacher, 
+            'co':co
+        }
         if headmaster_obj and teacher_list_obj:
             headmaster_obj = headmaster_account.objects.get(
                 sch_eiin=school_eiin)
@@ -105,30 +111,54 @@ def school_detail(request, school_eiin):
                 school=school_obj.schoolName)
             teacher_list_obj = teacher_account.objects.filter(
                 sch_eiin=school_eiin)
-            context = {'school': school_obj,
-                       'headmaster': headmaster_obj, 'teacher': teacher_list_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher, 'co':co}
+            context = {
+                'school': school_obj,
+                'headmaster': headmaster_obj, 
+                'teacher': teacher_list_obj, 
+                'feedback': feedback, 
+                'total_student': total_student, 
+                'total_teacher': total_teacher, 
+                'co':co
+            }
             return render(request, 'school_detail_view.html', context)
         elif headmaster_obj:
             headmaster_obj = headmaster_account.objects.get(
                 sch_eiin=school_eiin)
             feedback = student_feedback.objects.filter(
                 school=school_obj.schoolName)
-            context = {'school': school_obj,
-                       'headmaster': headmaster_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher, 'co':co}
+            context = {
+                'school': school_obj,
+                'headmaster': headmaster_obj, 
+                'feedback': feedback, 
+                'total_student': total_student, 
+                'total_teacher': total_teacher, 
+                'co':co
+            }
             return render(request, 'school_detail_view.html', context)
         elif teacher_list_obj:
             teacher_list_obj = teacher_account.objects.filter(
                 sch_eiin=school_eiin)
             feedback = student_feedback.objects.filter(
                 school=school_obj.schoolName)
-            context = {'school': school_obj,
-                       'teacher': teacher_list_obj, 'feedback': feedback, 'total_student': total_student, 'total_teacher': total_teacher, 'co':co}
+            context = {
+                'school': school_obj,
+                'teacher': teacher_list_obj, 
+                'feedback': feedback, 
+                'total_student': total_student, 
+                'total_teacher': total_teacher, 
+                'co':co
+            }
             return render(request, 'school_detail_view.html', context)
         else:
             feedback = student_feedback.objects.filter(
                 school=school_obj.schoolName)
-            context = {'school': school_obj, 'feedback': feedback,
-                       'total_student': total_student, 'total_teacher': total_teacher, 'co':co}
+            context = {
+                'school': school_obj, 
+                'feedback': feedback,
+                'total_student': total_student, 
+                'total_teacher': total_teacher, 
+                'co':co
+            }
             return render(request, 'school_detail_view.html', context)
     except schoolInfo.DoesNotExist:
         raise Http404
