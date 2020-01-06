@@ -149,8 +149,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Feedback id</th>
-                            <th scope="col">Feedback</th>
-                            <th scope="col">School</th>
+                            <th scope="col">Feedback</th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -158,8 +157,7 @@
                         {% for f in feedback %}
                         <tr>
                             <td>{{ f.id }}</td>
-                            <td>{{ f.feedback }}</td>
-                            <td>{{ f.school }}</td>
+                            <td>{{ f.feedback }}</td>                           
                         </tr>
                         {% endfor %}
                         {% if not feedback %}
