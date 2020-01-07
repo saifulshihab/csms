@@ -7,34 +7,15 @@
     <div class="form-group mt-2 select_radio">
       <span class="d-inline-block mr-3 text-info">Login as</span>
       <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="selecteduser"
-          id="headmaster"
-          value="headmaster"
-          required
-        />
+        <input class="form-check-input" type="radio" name="selecteduser" id="headmaster" value="headmaster" required />
         <label class="form-check-label" for="headmaster">Headmaster</label>
       </div>
       <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="selecteduser"
-          id="teacher"
-          value="teacher"
-        />
+        <input class="form-check-input" type="radio" name="selecteduser" id="teacher" value="teacher" />
         <label class="form-check-label" for="teacher">Teacher</label>
       </div>
       <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="selecteduser"
-          id="student"
-          value="student"
-        />
+        <input class="form-check-input" type="radio" name="selecteduser" id="student" value="student" />
         <label class="form-check-label" for="student">Student</label>
       </div>
     </div>
@@ -51,78 +32,36 @@
       <form action="userlogin" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter your employee ID"
-            name="userempid"
-            required
-          />
+          <input type="text" class="form-control" placeholder="Enter your employee ID" name="userempid" required />
         </div>
         <div class="form-group">
-          <input
-            type="password"
-            class="form-control"
-            placeholder="Enter your password"
-            name="userpass"
-            required
-          />
+          <input type="password" class="form-control" placeholder="Enter your password" name="userpass" required />
         </div>
         <div class="form-group mt-2 d-none">
           <span class="d-inline-block mr-3 text-info">Login as</span>
           <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="selecteduser"
-              id="is_headmaster"
-              value="headmaster"
-              required
-            />
+            <input class="form-check-input" type="radio" name="selecteduser" id="is_headmaster" value="headmaster"
+              required />
             <label class="form-check-label" for="headmaster">Headmaster</label>
           </div>
           <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="selecteduser"
-              id="is_teacher"
-              value="teacher"
-            />
+            <input class="form-check-input" type="radio" name="selecteduser" id="is_teacher" value="teacher" />
             <label class="form-check-label" for="teacher">Teacher</label>
           </div>
           <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="selecteduser"
-              id="student"
-              value="student"
-            />
+            <input class="form-check-input" type="radio" name="selecteduser" id="student" value="student" />
             <label class="form-check-label" for="student">Student</label>
           </div>
         </div>
-        <input
-          type="submit"
-          class="btn btn-sm btn-outline-info"
-          value="Login"
-        />
+        <input type="submit" class="btn btn-sm btn-outline-info" value="Login" />
       </form>
-      <span style="font-size: 13px;"
-        >Not Registered? <a href="usersignup">Sign Up</a></span
-      >
+      <span style="font-size: 13px;">Not Registered? <a href="usersignup">Sign Up</a></span>
     </div>
     <div id="student_login">
       <form action="userlogin" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter your roll number"
-            name="stdroll"
-            required
-          />
+          <input type="text" class="form-control" placeholder="Enter your roll number" name="stdroll" required />
         </div>
         <div class="form-group">
           <select class="form-control" name="select_class" id="" required>
@@ -136,8 +75,8 @@
         </div>
         <div class="form-group">
           <select class="form-control" name="select_school" id="" required>
-                <option value="" selected disabled>-- Select School --</option>
-            {% for sch in school %}            
+            <option value="" selected disabled>-- Select School --</option>
+            {% for sch in school %}
             <option value="{{ sch.schoolName }}">{{ sch.schoolName }}</option>
             {% endfor %}
             <!-- <option value="" selected disabled>-- Select School --</option>
@@ -160,76 +99,46 @@
           </select>
         </div>
         <div class="form-group">
-          <input
-            type="password"
-            class="form-control"
-            placeholder="Enter your password"
-            name="stdpass"
-            required
-          />
+          <input type="password" class="form-control" placeholder="Enter your password" name="stdpass" required />
         </div>
         <div class="form-group mt-2 d-none">
           <span class="d-inline-block mr-3 text-info">Login as</span>
           <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="selecteduser"
-              id="headmaster"
-              value="headmaster"
-              required
-            />
+            <input class="form-check-input" type="radio" name="selecteduser" id="headmaster" value="headmaster"
+              required />
             <label class="form-check-label" for="headmaster">Headmaster</label>
           </div>
           <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="selecteduser"
-              id="teacher"
-              value="teacher"
-            />
+            <input class="form-check-input" type="radio" name="selecteduser" id="teacher" value="teacher" />
             <label class="form-check-label" for="teacher">Teacher</label>
           </div>
           <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="selecteduser"
-              id="is_student"
-              value="student"
-            />
+            <input class="form-check-input" type="radio" name="selecteduser" id="is_student" value="student" />
             <label class="form-check-label" for="student">Student</label>
           </div>
         </div>
-        <input
-          type="submit"
-          class="btn btn-sm btn-outline-info"
-          value="Login"
-        />
+        <input type="submit" class="btn btn-sm btn-outline-info" value="Login" />
       </form>
-      <span style="font-size: 13px;"
-        >Not Registered? <a href="usersignup">Sign Up</a></span
-      >
+      <span style="font-size: 13px;">Not Registered? <a href="usersignup">Sign Up</a></span>
     </div>
   </div>
 </div>
 <script type="text/javascript">
-  $(document).ready(function() {
+  $(document).ready(function () {
     $("#teacher_head_login").hide();
     $("#student_login").hide();
   });
-  $("#headmaster").on("click", function() {
+  $("#headmaster").on("click", function () {
     $("#teacher_head_login").slideDown();
     $("#student_login").hide();
     document.getElementById("is_headmaster").checked = true;
   });
-  $("#teacher").on("click", function() {
+  $("#teacher").on("click", function () {
     $("#teacher_head_login").slideDown();
     $("#student_login").hide();
     document.getElementById("is_teacher").checked = true;
   });
-  $("#student").on("click", function() {
+  $("#student").on("click", function () {
     $("#teacher_head_login").hide();
     $("#student_login").slideDown();
     document.getElementById("is_student").checked = true;

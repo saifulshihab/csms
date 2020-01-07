@@ -59,6 +59,7 @@ body {
 .username p {
   padding: 10px;
 }
+
 .usersignupform,
 .officer-registration-form {
   margin: 0 auto;
@@ -117,16 +118,21 @@ body {
   height: 100%;
   position: fixed;
   z-index: 1;
-  background: #1f2a3e;
+  background: linear-gradient(
+    90deg,
+    rgb(2, 0, 36) 0%,
+    rgb(9, 9, 121) 35%,
+    rgb(87, 174, 191) 100%
+  );
 }
 .side_menu a {
   background: none;
   font-size: 15px;
   text-decoration: none;
-  color: #0681b1;
+  color: #2ac3ff;
 }
 .side_menu a:hover {
-  color: #00b0d9;
+  color: #017c97;
   transition: 0.3s all ease;
 }
 .side_menu i {
@@ -254,13 +260,23 @@ body {
   background: white;
 }
 .h_sidebar {
-  background: #111011;
+  background: linear-gradient(
+    90deg,
+    rgb(2, 0, 36) 0%,
+    rgb(115, 11, 108) 100%,
+    rgb(164, 3, 154) 100%
+  );
 }
 .h_sidebar a {
-  color: #a4039a;
+  color: #ea5de1;
 }
 .t_sidebar {
-  background: #0b0b0be6;
+  background: linear-gradient(
+    90deg,
+    rgb(2, 0, 36) 0%,
+    rgb(74, 117, 74) 100%,
+    rgb(0, 212, 255) 100%
+  );
 }
 .t_sidebar a {
   color: #579f57;
@@ -276,6 +292,6 @@ body {
   background: linear-gradient(to right, #000000 #434343) !important;
 }
 
-.header{
+.header {
   margin-left: -15px;
 }

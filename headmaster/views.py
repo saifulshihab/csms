@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from initapp.models import teacher_verify, headmaster_account, teacher_account, student_account
 from school.models import schoolInfo
-from .forms import assign_teacher_form
 from .models import assign_teacher
+from .forms import assign_teacher_form
 
 def headmasterSession(request):
     return headmaster_account.objects.get(
