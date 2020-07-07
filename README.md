@@ -19,7 +19,7 @@ In an Upazila there are many schools and schools are monitored by an education o
 *Assign Teacher*
 <img src="UI/Assign Teacher CSMS.png" />
 *Teacher Dashboard*
-<img src="UI/Teacher Dashboardd2.png" />
+<img src="UI/Teacher Dashboardd2 CSMS.png" />
 
 
 ## Trello Board
