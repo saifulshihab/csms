@@ -12,16 +12,14 @@ In an Upazila there are many schools and schools are monitored by an education o
 <img src="UI/School Details.png" />
 *Headmaster Pending Registration*
 <img src="UI/Headmaster Pending Registration CSMS.png" />
-*Student Feedback*
-<img src="UI/Get Student Feedback CSMS.png" />
 *Headmaster Dashboard*
 <img src="UI/Headmaster Dashboard CSMS.png" />
 *Teacher Pending Registration*
 <img src="UI/Teacher Pending Registration CSMS.png" />
 *Assign Teacher*
 <img src="UI/Assign Teacher CSMS.png" />
-*Teacher Can See Assigned Classes*
-<img src="UI/Teacher Classes.png" />
+*Teacher Dashboard*
+<img src="UI/Teacher Dashboardd2.png" />
 
 
 ## Trello Board
