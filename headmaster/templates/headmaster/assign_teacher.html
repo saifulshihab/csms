@@ -6,12 +6,18 @@
         <div class="col-9">
             <div class="assign_tech_table">
                 <h3 class="mb-4">Assigned Teacher</h3>
+                {% if hasAssigned %}
+                {% if hasAssigned == True %}
+                <p class="alert alert-danger">This class is already assigned.</p>
+                {% else %}                
+                <p class="alert alert-success">Teacher assigned successfully.</p>
+                {% endif %}                
+                {% endif %}                
                     <table class="table" style="text-align: center;">
                             <thead>
                               <tr>                                 
                                 <th scope="col">Teacher EMP ID</th>
-                                <th scope="col">Assigned Classes</th>
-                                <th scope="col">School EIIN</th>
+                                <th scope="col">Assigned Classes</th>                                
                                 <th scope="col">Remove</th>                               
                               </tr>
                             </thead>
@@ -19,8 +25,7 @@
                               {% for teacher in teacher %}                        
                               <tr>
                                 <td>{{ teacher.t_empid }}</td>
-                                <td>{{ teacher.classes}}</td>
-                                <td>{{ teacher.sch_eiin }}</td>                                
+                                <td>{{ teacher.classes}}</td>                                
                                 <td>                                  
                                   <a href="{{ teacher.delete_teacher }}" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>
                                   </a>

@@ -3,14 +3,16 @@
 <div class="header">
   <h3 class="font-weight-bold mb-4 d-inline-block">Teacher Pending Registration</h3>
 </div>
-<div class="row teacher_verify">
+<div class="teacher_verify">
+<div class="row">
   <table class="table" style="text-align: center;">
     <thead>
       <tr>
+        <th scope="col">DP</th>
         <th scope="col">Teacher Name</th>
         <th scope="col">Teacher Email</th>
         <th scope="col">Employee ID</th>
-        <th scope="col">School EIIN</th>
+        <th scope="col">EIIN</th>
         <th scope="col">Phone</th>
         <th scope="col">Accept/Reject</th>
       </tr>
@@ -19,6 +21,7 @@
       {% for teacher in tv %}
 
       <tr>
+        <td><img class="rounded-circle" src="{{ teacher.dp.url }}" alt=""></td>
         <td>{{ teacher.t_fullname }}</td>
         <td>{{ teacher.t_email}}</td>
         <td>{{ teacher.t_empid }}</td>
@@ -38,5 +41,6 @@
     <span class="text-danger">No teacher pending registration!</span>
   </div>
   {% endif %}
+</div>
 </div>
 {% endblock %}

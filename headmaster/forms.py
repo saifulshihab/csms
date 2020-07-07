@@ -1,8 +1,31 @@
 from django import forms
-from .models import assign_teacher
-from initapp.models import teacher_account
+from .models import headmaster_verify, headmaster_account, assign_teacher
+from teacher.models import teacher_account
 #from django.contrib.sessions.backends.db import SessionStore
 
+class headmasterRegForm(forms.ModelForm):
+    h_email = forms.CharField(widget=forms.EmailInput())
+    h_pass = forms.CharField(widget=forms.PasswordInput())
+    class Meta:
+        model = headmaster_verify
+        fields = [
+            'sch_eiin',
+            'h_fullname',
+            'h_email',
+            'dp',
+            'h_empid',
+            'h_pass',
+            'h_phone'
+        ]
+
+class headmasterLoginForm(forms.ModelForm):
+    h_pass = forms.CharField(widget=forms.PasswordInput())
+    class Meta:
+        model = headmaster_account
+        fields = [
+            'h_empid',
+            'h_pass'
+        ]
 
 class assign_teacher_form(forms.ModelForm):
     class Meta:
@@ -29,3 +52,14 @@ class assign_teacher_form(forms.ModelForm):
     #         'class': '',
     #         'id': 'sch_eiin'
     #     })
+
+class profileUpForm(forms.ModelForm):
+    class Meta:
+        model = headmaster_account
+        fields = [
+            'h_fullname',
+            'h_email',
+            'dp',
+            'h_pass',
+            'h_phone'
+        ]

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container mt-3">
+    <div class="usersignupform p-3">
+        <h4 class="d-inline-block">Headmaster Registration</h4><span
+            class="mt-1 float-right badge mt-1 badge-info">CSMS</span>
+        <div class="bg-info mb-3" style="padding: 0.5px;"></div>
+        <div id="">
+            <form action="{% url 'h-signup' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ regForm | crispy }}
+                <input type="submit" class="btn btn-outline-success btn-sm float-right" value="Register">
+            </form>
+            <span><a href="{% url 'h-login' %}" class="text-secondary" style="font-size:13px">Back to login</a></span>
+            <div class="mt-3">
+                {% if message %}
+                {% if msgtype == "pending" %}
+                <p class="alert alert-warning" id="alert-style">{{ message }}</p>
+                {% else %}
+                <p class="alert alert-danger" id="alert-style">{{ message }}</p>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

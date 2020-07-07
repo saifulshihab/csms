@@ -3,24 +3,25 @@
 <div class="header">
   <h3 class="font-weight-bold mb-4 d-inline-block">All Teacher</h3>
 </div>
-<div class="row allteacher">
+<div class="allteacherr"> 
+<div class="row">
   <table class="table" style="text-align: center;">
     <thead>
       <tr>
+        <th scope="col">DP</th>
         <th scope="col">Teacher Name</th>
         <th scope="col">Teacher Email</th>
-        <th scope="col">Employee ID</th>
-        <!-- <th scope="col">School EIIN</th> -->
+        <th scope="col">Employee ID</th>        
         <th scope="col">Phone</th>
       </tr>
     </thead>
     <tbody>
       {% for teacher in teacher %}
       <tr>
+        <td><img class="userlistimg rounded-circle" src="{{ teacher.dp.url }}" alt=""></td>
         <td>{{ teacher.t_fullname }}</td>
         <td>{{ teacher.t_email}}</td>
-        <td>{{ teacher.t_empid }}</td>
-        <!-- <td>{{ teacher.sch_eiin}}</td> -->
+        <td>{{ teacher.t_empid }}</td>        
         <td> {{ teacher.t_phone }}</td>
       </tr>
       {% endfor %}
@@ -29,5 +30,6 @@
       {% endif %}
     </tbody>
   </table>
+</div>
 </div>
 {% endblock %}
