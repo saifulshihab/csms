@@ -1,25 +1,15 @@
 {% extends 'o_base.html' %}
 {% block content %}
-                <div class="row">
-                    <div class="col">                    
-                    <table class="table">
-                            <thead>
-                              <tr>                                
-                                <th scope="col">Feedback id</th>
-                                <th scope="col">Feedback</th>
-                                <th scope="col">From School</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                            {% for f in feedback %}
-                                <tr>                                
-                                    <td>{{ f.id }}</td>                                       
-                                    <td>{{ f.feedback }}</td>                                       
-                                    <td>{{ f.school }}</td>
-                                </tr>
-                            {% endfor %}                             
-                            </tbody>
-                    </table>
-                </div>
-                </div>            
+<div class="row">
+      <div class="col">
+            <h3 class="heading d-block p-1">Student Feedbacks</h3>
+            {% for f in feedback %}
+            <a class="alert alert-light d-block mb-1">
+                  <p class="d-inline">{{ f.feedback }}</p>
+                  <span class="d-inline font-weight-bold ml-1"> {{ f.posted_time }}</span>
+                  <p class="d-inline font-weight-bold float-right">{{ f.school }}</p>
+            </a>
+            {% endfor %}
+      </div>
+</div>
 {% endblock content %}

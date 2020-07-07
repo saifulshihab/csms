@@ -2,7 +2,7 @@
 {% block content %}
 <div class="row">
     {% for sch in school %}
-    <div class="col-4 mb-4">
+    <div class="col-3 mb-4">
         <div class="school">
             <a href="{{ sch.get_absolute_url }}">
             <div class="school_name">
@@ -14,7 +14,7 @@
                         <h1 style="color: #1ca849;">{{ sch.totalStudent }}</h1>
                     </div>
                     <div class="text">
-                        <p>Total number of student</p>
+                        <p>Total Number of Students</p>
                     </div>
                 </div>
                 <div class="info">
@@ -23,7 +23,7 @@
                     </div>
                     <div class="text">
                         <p>Attendance</p>
-                        <p class="attntxt">Last 30 days</p>
+                        <p class="attntxt">Last 7 days</p>
                     </div>
                 </div>
                 <div class="info">
@@ -38,8 +38,7 @@
             </div>
             </a>
         </div>
-    </div>
-    <div class=""></div>
+    </div>    
     {% endfor %}
 </div>
-{% endblock content %}
+{% endblock %}

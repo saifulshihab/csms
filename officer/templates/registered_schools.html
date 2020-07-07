@@ -4,12 +4,14 @@
     <h3 class="font-weight-bold mb-4 d-inline-block">Registered School</h3>
 </div>
 
-<div class="row head_verify">
+<div class="head_verify">
+<div class="row">
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">EIIN</th>
                 <th scope="col">School Name</th>
+                <th scope="col">Location</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +19,7 @@
             <tr>
                 <td>{{ sch.SchoolEIIN }}</td>
                 <td>{{ sch.schoolName }}</td>
+                <td>{{ sch.schoolAddress }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -24,5 +27,6 @@
     {% if not schools %}
     <span class="text-danger">No Schools Registered!</span>
     {% endif %}
+</div>
 </div>
 {% endblock %}
