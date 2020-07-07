@@ -4,12 +4,12 @@
     <div class="school_name mb-5">
         <h1 style="font-weight:bold">{{school.schoolName}}</h1>
         <div style="padding: 1px;background:#4b484b"></div>
-        <h2>School EIIN: {{school.SchoolEIIN}}</h2>
+        <h2>EIIN: {{school.SchoolEIIN}}</h2>
     </div>
     <div class="total_student">
         <div class="row">
             <div class="col">
-                <h3 class="float-left">Total Number Of Student</h3>
+                <h3 class="float-left">Total Number of Student</h3>
                 <span class="float-right">
                     <h3 style="color: #1ca849;font-weight:bold">{{total_student}}</h3>
                 </span>
@@ -27,8 +27,8 @@
         </div>
         <div class="row">
             <div class="col">
-                <p class="text-secondary">Male Teacher 12</p>
-                <p class="text-secondary">Female Teacher 4</p>
+                <p class="text-secondary">Male Teacher : {{ total_male_t }}</p>
+                <p class="text-secondary">Female Teacher : {{ total_female_t}}</p>
             </div>
         </div>
     </div>
@@ -37,7 +37,7 @@
             <div class="col">
                 <div class="attdays float-left">
                     <h3 class="">Attendance</h3>
-                    <p class="text-secondary">Last 30 days</p>
+                    <p class="text-secondary">Last 7 days</p>
                 </div>
                 <span class="float-right">
                     <h3 style="color: #b505b5;font-weight:bold">

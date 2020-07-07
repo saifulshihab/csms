@@ -1,54 +1,158 @@
 {% extends 'teacher/t_base.html' %}
 {% block content %}
-<h2 class="mb-3">All students of class {{classno}}</h2>
-<div class="mb-5" style="margin-left:-15px ">
-  <form method="POST">
-    {% csrf_token %}
-    <div class="input-group">
-      <input class="form-control mr-3" type="text" id="roll" name="roll" placeholder="Student Roll" required>
-      <input class="form-control mr-3" type="text" id="password" name="password" placeholder="password" required>
-      <input type="submit" class="btn btn-sm btn-info" value="Add">
+{% load crispy_forms_tags %}
+<div class="cls_header mb-2">
+  <div class="row">
+    <div class="col">
+      <h4 class="d-inline-block mr-2">Total Student : {{total_nof_student}}</h4><span
+        class="font-weight-bold float-right">(Class
+        {{classno}})</span>
     </div>
-  </form>
-  <div>
-    {% if messages %}
-    {% for msg in messages %}
-    <p class="text-danger">{{msg}}</p>
-    {% endfor %}
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    {% if att_msg%}
+    {% if msg_type == 'failed' %}
+    <p class="alert alert-danger"><i class="mr-2 fas fa-exclamation-circle"></i> {{att_msg}}</p>
+    {% else %}
+    <p class="alert alert-success"><i class="mr-2 fas fa-check-circle"></i> {{att_msg}}</p>
     {% endif %}
+    {% endif %}   
   </div>
 </div>
-<div class="row teacher_verify">
-  <table class="table" style="text-align: center;">
-    <thead>
-      <tr>
-        <th scope="col">Student Roll</th>
-        <th scope="col">Student Class</th>
-        <th scope="col">Student EIIN</th>
 
-      </tr>
-    </thead>
-    <tbody>
-      {% for student in sa %}
-
-      <tr>
-        <td>{{ student.s_roll }}</td>
-        <td>{{ student.s_class}}</td>
-        <td>{{ student.SchoolEIIN }}</td>
-
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% if not sa %}
-  <div class="justify-content-center d-block">
-    <span class="text-danger">No Student registration yet!</span>
+<div class="row">
+  <div class="col-6">
+    <div class="add_student_form">
+      <h4>Add new student</h4>
+      <form method="POST">
+        {% csrf_token %}
+        {{ studentRegistrationForm | crispy }}
+        <input type="submit" class="btn float-right btn-sm btn-primary" value="ADD">
+      </form>
+      <div>
+        {% if messages %}
+        {% for msg in messages %}
+        <p class="text-danger">{{msg}}</p>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
   </div>
-  {% endif %}
+  <div class="col-6">
+    <div class="total_student_list">
+      <h4>Student List</h4>
+      <div class="total_student_list_data">
+        <table class="table" style="text-align: center;">
+          <thead>
+            <tr>
+              <th scope="col">Student Roll</th>
+              <th scope="col">Password</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if student_list %}
+            {% for student in student_list %}
+            <tr>
+              <td>{{ student.s_roll }}</td>
+              <td>{{ student.s_pass}}</td>
+              <td>
+                <a href="" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <td class="text-danger">No student registered yet!</td>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-{% endblock content %}
+<div class="p-2"></div>
+<div class="row">
+  <div class="col-6">
+    <div class="attendance_form_div">
+      <h4 class="">Submit Attendance</h4>
+      <form method="POST">
+        {% csrf_token %}
+        {{ attendance_form | crispy }}
+        <input class="btn float-right btn-sm btn-warning" type="submit" value="SUBMIT">
+      </form>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="attendance_by_date">
+      <h4>Attendance by Date</h4>
+      <div class="attendance_form_div_data">
+        <table class="table" style="text-align: center;">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Presence</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if attendance_by_date %}
+            {% for at in attendance_by_date %}
+            <tr>
+              <td>{{at.date}}</td>
+              <td>{{at.todays_attendance}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <td class="text-danger">No Data!</td>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<div class="p-2"></div>
+<div class="row">
+  <div class="col-6">
+    <div class="result_up_div">
+      <h4>Upload Result</h4>
+      <form action=" " method="POST">
+        {% csrf_token %}
+        {{ ResultForm | crispy }}
+        <input type="submit" class="btn float-right btn-sm btn-danger" value="SUBMIT">
+      </form>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="result_data">
+      <h4>Result by Exam</h4>
+      <div class="school_result_data">
+        <table class="table" style="text-align: center;">
+          <thead>
+            <tr>
+              <th>Exam Type</th>
+              <th>Year</th>
+              <th>Total Pass</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if result_data %}
+            {% for res in result_data %}
+            <tr>
+              <td>{{res.exam_type}}</td>
+              <td>{{res.year}}</td>
+              <td>{{res.total_pass}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <td class="text-danger">No data!</td>
+            {% endif %}
+          </tbody>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
