@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import feedbackForm
-from .models import student_feedback
-from initapp.models import student_account
+#from .models import student_feedback
+from .models import student_account
 from school.models import schoolInfo
 from django.contrib import messages
+
 def loginsuccess(request):
     return render(request, 'student_dashboard.html')
 
@@ -13,7 +14,7 @@ def send_feedback(request):
     if request.method == 'POST':
         feedback_form = feedbackForm(request.POST)
         if feedback_form.is_valid():
-            student_feedback.objects.create(**feedback_form.cleaned_data)
+            feedback_form.save()
             feedback_form = feedbackForm()
         else:
             print(feedback_form.errors)
